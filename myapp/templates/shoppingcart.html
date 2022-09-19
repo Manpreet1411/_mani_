@@ -1,0 +1,99 @@
+{% extends "base1.html" %}
+
+{% load static %}
+{% block title %}
+<title> Shopping cart </title>
+{% endblock %}
+{% block content %}
+
+<!--<h4>Your shopping cart contains: <span></span></h4>-->
+
+
+<style>
+
+      .b{position: absolute ; top: 6.1%; left: 90%;  color: #fff;border: none;text-align: center;background: none;width: 80px;height: 45px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+
+</style>
+
+<!--	signinbutton==========================-->
+
+				<a href= "{% url 'shoedetails' 1 %}">
+												<button type="submit"  class="b">Sign-in</button>
+										</a>
+
+<br>
+       <div class="container">
+           <br>
+           <h2>Shopping cart</h2>
+            {% if cartdata %}
+           <br>
+
+           <table id="t" width="100%" class="table table-primary table-hover table-bordered border-dark, js-serial">
+
+
+               <tr bgcolor="black"  style="color:white">
+                   <th>Serial no.</th>
+                   <th>Product image</th>
+                   <th> Product name</th>
+                   <th> Price</th>
+                   <th>Quantity</th>
+                   <th> Total Cost</th>
+                   <th> Remove</th>
+               </tr>
+
+
+               <tr>
+
+                   {% for data in cartdata %}
+                   <td></td>
+                   <td><img src={{data.pid.product_pic.url}} width="100px" ></td>
+                   <td>{{data.pid}}</td>
+                   <td>Rs.{{data.price}}</td>
+                   <td>{{data.quantity}}</td>
+                   <td>Rs.{{data.total_cost}}</td>
+                   <td> <a href="{% url 'deleteproduct' data.id %}"> <img src="{% static 'images/delete.png' %}"></a></td>
+               </tr>
+
+               {% endfor %}
+
+               <tr>
+                    <td></td><td></td><td></td>
+                    <td> Grand Total</td>
+                    <td> Rs.{{cartsum.total_cost__sum}}/-</td>
+
+
+               </tr>
+               <tr>
+               <td></td><td></td><td></td><td></td>
+               <td> <br><input type="submit" name="Checkout" class="btn btn-primary"  value="Checkout"></td>
+
+               </tr>
+               <tr><td><br></td></tr>
+
+
+           </table>
+           {% else %}
+           <br>
+           <h4>Your shopping cart is empty. Please add items.</h4>
+           <br>
+           {% endif %}
+       </div>
+
+<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+<script>
+    function addRowCount(tableAttr) {
+      $(tableAttr).each(function(){
+        $('th:first-child, thead td:first-child', this).each(function(){
+          var tag = $(this).prop('tagName');
+          $(this).before('<'+tag+'> </'+tag+'>');
+        });
+        $('td:first-child', this).each(function(i){
+          $(this).before('<td>'+(i+1)+'</td>');
+        });
+      });
+}
+
+addRowCount('.js-serial');
+</script>
+
+{% endblock %}

@@ -1,0 +1,3 @@
+{% for category in categorydata %}
+   <li><a href="{% url 'productcategories' category.id %}"> {{category}}</a></li>
+{% endfor %}

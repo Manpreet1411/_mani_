@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+<title> welcome to our website</title>
+{% endblock %}
+{% block content %}
+
+
+<!-- /girds_bottom-->
+	<div class="grids_bottom">
+		<div class="style-grids">
+			<div class="col-md-6 style-grid style-grid-1">
+				<img src="{% static 'images/b1.jpg' %}" alt="shoe">
+			</div>
+		</div>
+
+		<div  class="col-md-6 style-grid style-grid-2">
+			<div style="background:black"  class="style-image-1_info">
+				<div  class="style-grid-2-text_info">
+
+					<h3 style="color:#f05936">Athletic Shoes</h3>
+					<p   style="color:#f05936">The athletic Shoes are all about updated support and cushioning. The lightweight and padded design helps keep you moving as
+						you push through your miles. A midfoot cage gives you the support you need for your run. These tighten around your feet when you lace
+						up, keeping your feet secure with every stride.</p>
+					<div   style="color:#f05936" class="shop-button two">
+						<a  style="background-color:#f05936"  href="{% url 'productdetails'   %}">Shop Now</a>
+					</div>
+				</div>
+			</div>
+			<div class="style-image-2">
+				<img src="{% static 'images/b2.jpg' %}" alt="shoe">
+				<div class="style-grid-2-text">
+					<h3 style="color:#f05936" >Air force</h3>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<!-- //grids_bottom-->
+	<!-- /girds_bottom2-->
+	<div class="grids_sec_2">
+		<div class="style-grids_main">
+			<div class="col-6">
+				<div class="grid_sec_info">
+					<div class="style-grid-2-text_info">
+						<h3 style="color:#f05936">Loafers Shoes</h3>
+						<p style="color:#f05936">Loafers Shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes. This pair of shoes is
+							sure to make you look smart & classy. These will go with most of your casual outfits. This product is made of premium quality
+							and highly material. These will take you from season to season with effortless style and will make your feet feel in heaven.</p>
+						<div class="shop-button two">
+							<a style="background-color:#f05936" href="{% url 'productdetails'  %}">Shop Now</a>
+						</div>
+					</div>
+				</div>
+				<div class="style-image-2" >
+					<img src="{% static 'images/b4.jpg' %}" alt="shoe">
+					<div class="col-6  style-grid-2-text">
+						<h3>Air force</h3>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-6grids_sec_2_left">
+
+				<div class="style-image-2">
+					<img src="{% static 'images/b3.jpg' %}" alt="shoe">
+					<div class="style-grid-2-text">
+						<h3 style="color:#f05936">Air force</h3>
+					</div>
+				</div>
+				<div class="grid_sec_info last">
+					<div class="style-grid-2-text_info">
+						<h3 style="color:#f05936">Skateboard Shoes</h3>
+						<p style="color:#f05936" align="left">The skateboard shoes are fabricated with high quality materials to enhance the durability and life span of shoes.
+							These shoes are stylish featured with impact protection and lightweight feel. The mold outsole provides extra support to
+							your feet and are designed to use with skateboarding adventures.
+							  </p>
+						<div class="shop-button two">
+							<a  style="background-color:#f05936" href="{% url 'productdetails' %}">Shop Now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- //grids_bottom2-->
+	<!-- /Properties -->
+	<div class="mid_slider_w3lsagile">
+		<div class="col-md-3 mid_slider_text">
+			<h5>Some More Shoes</h5>
+		</div>
+		<div class="col-md-9 mid_slider_info">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+					<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+					<li data-target="#myCarousel" data-slide-to="3" class=""></li>
+				</ol>
+
+                {% for data in product_details_data  %}
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<div class="row">
+
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+						</div>
+
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+							<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+						</div>
+
+
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="{{data.product_pic.url}}" alt="Image" style="max-width:100%;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="fa fa-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="fa fa-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+				<!-- The Modal -->
+
+			</div>
+		</div>
+
+
+		<div class="clearfix"> </div>
+	</div>
+	<!--//banner -->
+
+{% endblock %}
