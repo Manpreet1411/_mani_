@@ -1,3 +1,4 @@
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -5,7 +6,9 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
+from myapp.forms import RegisterForm
 from myapp.models import Product, ShoppingCart, Category
 
 
@@ -56,6 +59,19 @@ def productcategories(request, cid):
     categoryobj=Category.objects.get(id=cid)
     print(categoryobj)
     return render(request, "category_products.html",{"product_details_data":product_details_data, "categoryname":categoryobj.Category_name})
+
+
+
+class Signup(SuccessMessageMixin, CreateView):
+    form_class=RegisterForm
+    template_name="signup.html"
+    success_url = reverse_lazy('signup')
+    success_message = 'Signup Successful.You can login now'
+
+    def dispatch(self, *args, **kwargs):
+        return super(Signup,self).dispatch(*args, **kwargs)
+
+
 
 
 

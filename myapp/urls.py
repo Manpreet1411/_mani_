@@ -11,7 +11,8 @@ urlpatterns = [
     path('shoes-product-details', views.showshoesdetails, name='productdetails'),
     path('shoes-categories/<int:cid>', views.productcategories, name='productcategories'),
     path('delete-product-from-cart/<int:id>', views.deleteproduct , name='deleteproduct'),
-    path('skateboard-shoes-details/<int:pid>', views.showshoesdetails1, name='shoedetails')
+    path('skateboard-shoes-details/<int:pid>', views.showshoesdetails1, name='shoedetails'),
+    path('sign-up', views.Signup.as_view(), name='signup'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
