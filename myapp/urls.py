@@ -9,10 +9,10 @@ urlpatterns = [
     path('add-shopping-cart', views.addtoshoppingcart, name='addtoshoppingcart'),
     path('shopping-cart', views.showshoppingcart, name='shoppingcart'),
     path('shoes-product-details', views.showshoesdetails, name='productdetails'),
+    path('skateboard-shoes-details/<int:pid>', views.showshoesdetails1, name='shoedetails'),
     path('shoes-categories/<int:cid>', views.productcategories, name='productcategories'),
     path('delete-product-from-cart/<int:id>', views.deleteproduct , name='deleteproduct'),
-    path('skateboard-shoes-details/<int:pid>', views.showshoesdetails1, name='shoedetails'),
     path('sign-up', views.Signup.as_view(), name='signup'),
+    path('sign-in', views.Signin, name='signin'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

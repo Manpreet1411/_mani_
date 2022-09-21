@@ -1,0 +1,43 @@
+{% extends "base1.html" %}
+
+{% load static %}
+{% block title %}
+<title> Sign in </title>
+{% endblock %}
+{% block content %}
+
+
+<style type="text/css">
+    #form input
+    {
+       width:150px;
+    }
+
+</style>
+
+         <div class="page-head_agile_info_w3l">
+
+			<div class="container">
+                <div class="input-group w3_w3layouts">
+				<h3>{{ Signin  }}</h3>
+
+                <form id="form2" method="post">
+                    {% csrf_token %}
+                {{ form.as_p }}
+                    <input type="submit" name="submit" value="Sign in">
+                </form>
+                  </div>
+
+                {% if messages %}
+                <ul class="message">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+         </div>
+
+{% endblock %}
+
+

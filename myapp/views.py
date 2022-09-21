@@ -1,14 +1,16 @@
+from django.contrib.auth import login
+from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Sum
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect , HttpResponse , request
 from django.shortcuts import render
 
 
 # Create your views here.
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy ,reverse
 from django.views.generic import CreateView
 
-from myapp.forms import RegisterForm
+from myapp.forms import RegisterForm , LoginForm
 from myapp.models import Product, ShoppingCart, Category
 
 
@@ -55,10 +57,10 @@ def deleteproduct(request, id):
     return HttpResponseRedirect(reverse_lazy('shoppingcart'))
 
 def productcategories(request, cid):
-    product_details_data=Product.objects.filter(category=cid)
+    productsdata=Product.objects.filter(category=cid)
     categoryobj=Category.objects.get(id=cid)
     print(categoryobj)
-    return render(request, "category_products.html",{"product_details_data":product_details_data, "categoryname":categoryobj.Category_name})
+    return render(request, "category_products.html",{"productsdata":productsdata, "categoryname":categoryobj.Category_name})
 
 
 
@@ -70,6 +72,24 @@ class Signup(SuccessMessageMixin, CreateView):
 
     def dispatch(self, *args, **kwargs):
         return super(Signup,self).dispatch(*args, **kwargs)
+
+
+
+def Signin(request):
+    formobj = LoginForm(request.POST or None)
+    if formobj.is_valid():
+        username1= formobj.cleaned_data.get("username1")
+        userobj=User.objects.get(username__iexact=username1)
+        login(request,userobj)
+        request.session['myusername'] = username1
+        return HttpResponseRedirect(reverse('homepage'))
+    else:
+        return render(request, "signin.html", {"myform": formobj})
+
+
+
+
+
 
 
 

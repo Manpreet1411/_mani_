@@ -1,7 +1,7 @@
 {% extends "base1.html" %}
 {% load static %}
 {% block title %}
-<title> Categories</title>
+<title> Sign up </title>
 {% endblock %}
 {% block content %}
 
@@ -17,6 +17,7 @@
          <div class="page-head_agile_info_w3l">
 
 			<div class="container">
+                <div class="input-group w3_w3layouts">
 				<h3>{{ Signup }}</h3>
 
                 <form id="form" method="post">
@@ -24,13 +25,13 @@
                 {{ form.as_p }}
                     <input type="submit" name="submit" value="Signup">
                 </form>
+                  </div>
 
                 {% if messages %}
                 <ul class="message">
                     {% for message in messages %}
-                    <li{% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
-
-                {% endfor %}
+                    <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
                 </ul>
                 {% endif %}
             </div>

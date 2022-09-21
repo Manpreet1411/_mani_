@@ -1,5 +1,7 @@
 from django import forms
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.http import request
 
 
 class RegisterForm(forms.ModelForm):
@@ -25,3 +27,16 @@ class RegisterForm(forms.ModelForm):
         if commit:
              userobj.save()
         return userobj
+
+class LoginForm(forms.Form):
+         username1=forms.CharField(label="Username")
+         password1= forms.CharField(label="password", widget=forms.PasswordInput)
+
+         def clean(self):
+             uname=self.cleaned_data.get("username1")
+             pass1=self.cleaned_data.get("password1")
+             userobj= authenticate(request, username=uname, password=pass1)
+             if userobj is None:
+                 raise forms.ValidationError("Invalid username/ password")
+             return super(LoginForm , self).clean()
+
