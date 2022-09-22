@@ -1,0 +1,97 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block title %}
+<title> Checkout </title>
+{% endblock %}
+{% block content %}
+
+
+
+<style type="text/css">
+    #form input
+    {
+       width:150px;
+    }
+
+</style>
+
+
+ <div class="page-head_agile_info_w3l">
+
+			<div class="container">
+                <div class="input-group w3_w3layouts">
+				<h3>{{ Checkout }}</h3>
+
+                <form id="form" method="post">
+                    {% csrf_token %}
+                 <div class="col-md-8 address_form">
+						<h4>Add a new Details</h4>
+						<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+							<section class="creditly-wrapper wrapper">
+								<div class="information-wrapper">
+									<div class="first-row form-group">
+										<div class="controls">
+											<label class="control-label">Full name: </label>
+											<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
+										</div>
+										<div class="card_number_grids">
+											<div class="card_number_grid_left">
+												<div class="controls">
+													<label class="control-label">Mobile number:</label>
+													<input class="form-control" name="phone" type="number" placeholder="Mobile number">
+												</div>
+											</div>
+											<div class="card_number_grid_right">
+												<div class="controls">
+													<label class="control-label">Pincode: </label>
+													<input class="form-control" name="pincode" type="text" placeholder="Landmark">
+												</div>
+											</div>
+											<div class="clear"> </div>
+										</div>
+										<div class="controls">
+											<label class="control-label">Address: </label>
+											<input class="form-control" type="text" placeholder="Address">
+										</div>
+										<div class="controls">
+											<label class="control-label">City: </label>
+											<input class="form-control" type="text" name="city" placeholder="Address">
+										</div>
+										<div class="controls">
+											<label class="control-label">State: </label>
+											<input class="form-control" type="text" name="state" placeholder="Address">
+										</div>
+										<div class="controls">
+											<label class="control-label">Payment mode: </label>
+											<select class="form-control option-w3ls">
+																							<option value="cod"> Cash on delivery</option>
+																							<option value="cod">Google pay on 123 </option>
+
+
+																					</select>
+										</div>
+									</div>
+
+									<button class="submit check_out" name="submit" value="Checkout"></button>
+								</div>
+							</section>
+						</form>
+
+					</div>
+                 </div>
+
+
+
+
+                {% if messages %}
+                <ul class="message">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+         </div>
+
+{% endblock %}
+

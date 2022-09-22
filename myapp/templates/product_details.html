@@ -20,7 +20,7 @@
 	</script>
 <style>
 
-      .b{position: absolute ; top: 6%; left: 92.5%;  color: #fff;border: none;text-align: center;background: none;width: 80px;height: 50px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+      .b{position: absolute ; top: 6.3%; left: 92.5%;  color: #fff;border: none;text-align: center;background: none;width: 80px;height: 50px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
 </style>
 
 	<!-- //custom-theme -->
@@ -101,8 +101,8 @@
 
 <!--	signinbutton==========================-->
 
-				<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
+				<a href= "{% url 'signin'  %}">
+												<button type="submit"  class="b">Sign-in</button>
 										</a>
 		<!-- //search -->
 		<div class="clearfix"></div>
@@ -368,15 +368,13 @@
 											</div>
 
 											<div class="shoe single-item hvr-outline-out">
-
 												<form action="{% url 'addtoshoppingcart' %}" method="post">
-													{% csrf_token %}
 													<input type="hidden" name="item_id" value=" {{data.id}}">
-													<input type="hidden" name="amount" value="{{data.price}}">
+													<input type="hidden" name="amount" value="{{data.id}}">
 													<input type="hidden" name="quantity" value="1">
 													<button type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
 
-
+													<a href="#" data-toggle="modal" data-target="#myModal1"></a>
 												</form>
 
 

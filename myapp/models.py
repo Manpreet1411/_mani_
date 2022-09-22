@@ -1,4 +1,5 @@
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -35,6 +36,37 @@ class ShoppingCart(models.Model):
     quantity=models.IntegerField()
     total_cost=models.IntegerField()
     sessionid=models.CharField(max_length=700, null=True)
+
+
+
+class Order(models.Model):
+    username=models.ForeignKey(User,on_delete=models.CASCADE)
+    name=models.CharField(max_length=100)
+    address=models.TextField()
+    phone=models.IntegerField()
+    pincode=models.IntegerField()
+    city=models.CharField(max_length=100)
+    state=models.CharField(max_length=100)
+    values=(('cod','Cash on delivery'),('gpay','google pay on 123'))
+    payment_mode=models.CharField(choices=values, max_length=10, null=True)
+
+    grandtotal=models.IntegerField()
+    order_date=models.DateField(auto_now_add=True)
+    order_update_date=models.DateField(auto_now=True)
+    values2=(('received', 'Order Received'),('process','order in process'),('shipped','order shipped'),('delivered','order delivered'),('pending','Order pending'),('cancelled','order cancelled'))
+    order_status=models.CharField(choices=values2, max_length=10, null=True, default='received')
+
+
+
+class Order_Details(models.Model):
+
+     orderno=models.ForeignKey(Order, on_delete=models.CASCADE)
+     product_id=models.ForeignKey(Product, on_delete=models.CASCADE)
+     price=models.IntegerField()
+     quantity=models.IntegerField()
+     total_cost=models.IntegerField()
+
+
 
 
 

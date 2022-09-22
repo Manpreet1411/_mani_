@@ -8,7 +8,6 @@
 
 <!--<h4>Your shopping cart contains: <span></span></h4>-->
 
-
 <style>
 
       .b{position: absolute ; top: 6.1%; left: 89%;  color: #fff;border: none;text-align: center;background: none;width: 80px;height: 45px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
@@ -23,13 +22,11 @@
 
 <!--	signinbutton==========================-->
 
-				<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
+				<a href= "{% url 'signup'  %}"><button type="submit"  class="b">Sign up</button></a>
 
-                <a href= "{% url 'signin'  %}">
-                                                                <button type="submit"  class="b2">Sign in</button>
-                                                        </a>
+
+                <a href= "{% url 'signin'  %}"><button type="submit"  class="b2">Sign in</button> </a>
+
 
 
 <br>
@@ -76,7 +73,7 @@
                </tr>
                <tr>
                <td></td><td></td><td></td><td></td>
-               <td> <br><input type="submit" name="Checkout" class="btn btn-primary"  value="Checkout"></td>
+               <td> <br><a href="{% url 'checkout' %}"><input type="submit" name="Checkout" class="btn btn-primary"  value="Checkout"></a></td>
 
                </tr>
                <tr><td><br></td></tr>
