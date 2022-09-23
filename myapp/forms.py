@@ -30,7 +30,7 @@ class RegisterForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
          username1=forms.CharField(label="Username")
-         password1= forms.CharField(label="password", widget=forms.PasswordInput)
+         password1= forms.CharField(label="Password", widget=forms.PasswordInput)
 
          def clean(self):
              uname=self.cleaned_data.get("username1")

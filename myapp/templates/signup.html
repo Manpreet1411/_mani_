@@ -1,9 +1,11 @@
-{% extends "base1.html" %}
+{% extends "bn.html" %}
 {% load static %}
 {% block title %}
 <title> Sign up </title>
 {% endblock %}
 {% block content %}
+
+
 
 
 <style type="text/css">
@@ -20,9 +22,10 @@
                 <div class="input-group w3_w3layouts">
 				<h3>{{ Signup }}</h3>
 
-                <form id="form" method="post">
+                <form id="form" method="post"  >
                     {% csrf_token %}
                 {{ form.as_p }}
+                    <br>
                     <input type="submit" name="submit" value="Signup">
                 </form>
                   </div>

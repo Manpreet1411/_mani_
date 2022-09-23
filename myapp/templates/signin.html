@@ -1,4 +1,4 @@
-{% extends "base1.html" %}
+{% extends "bn.html" %}
 {% load static %}
 {% block title %}
 <title> Sign in </title>
@@ -16,13 +16,13 @@
 
          <div class="page-head_agile_info_w3l">
 
-			<div class="container">
+			<div class="container" >
                 <div class="input-group w3_w3layouts">
 				<h3>{{ Signin }}</h3>
 
-                <form id="form" method="post">
+                <form id="form" method="post" >
                     {% csrf_token %}
-                {{ form.as_p }}
+                {{ myform.as_p }}
                     <input type="submit" name="submit" value="Signin">
                 </form>
                   </div>
@@ -30,7 +30,7 @@
                 {% if messages %}
                 <ul class="message">
                     {% for message in messages %}
-                    <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
+                    <li{% if message.tags %} class="{{message.tags}}"{% endif %}> {{ message }} </li>
                     {% endfor %}
                 </ul>
                 {% endif %}

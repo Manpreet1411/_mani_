@@ -25,7 +25,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <style>
 
-      .b{position: absolute; top: 6.5%; left: 92.5%;  color: #fff;border: none;text-align: center;background: none;width: 80px;height: 50px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+      .b{position: absolute; top: 6.5%; left: 72%;  color: #fff;border: none;text-align: center;background: none;width: 70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+</style>
+<style>
+
+      .b2{position: absolute; top: 6.5%; left: 77%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+</style>
+	<style>
+
+      .b3{position: absolute; top: 6.5%; left: 65%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
 </style>
 
 
@@ -59,14 +67,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<nav>
 						<ul>
 
-							<li><a href="{% url 'homepage'%}" class="active">Home</a></li>
+							<li><a href="{% url 'homepage' %}" class="active">Home</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="404.html">Team</a></li>
 							<li><a href="shop.html">Shop Now</a></li>
 							<li><a href="contact.html">Contact</a></li>
 
 
-                          	<li class='sub-menu'><a href='#settings'>Categories<div class='fa fa-caret-down right'></div></a>
+                          	<li class='sub-menu'><a href='#'>Categories<div class='fa fa-caret-down right'></div></a>
                             	<ul>
 									{% fetch_categories %}
 
@@ -132,9 +140,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<div class="banner-info-wthree">
 
-										<a href= "{% url 'shoedetails' 1 %}">
-												<button type="submit"  class="b">Sign-in</button>
+										<a href= "{% url 'signup'  %}">
+												<button type="submit"  class="b">Sign up</button>
 										</a>
+
+
+										<a href= "{% url 'signin'  %}">
+												<button type="submit"  class="b2">Sign in</button>
+										</a>
+										<a href= "{% url 'logout'  %}">
+													<button type="submit"  class="b3">Logout</button>
+											</a>
+
 
 
 									<h3>Skateboard</h3>
@@ -148,9 +165,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="banner-top3">
 
 								<div class="banner-info-wthree">
-									<a href= "{% url 'shoedetails' 1 %}">
-												<button type="submit"  class="b">Sign-in</button>
+
+										<a href= "{% url 'signup'  %}">
+												<button type="submit"  class="b">Sign up</button>
 										</a>
+
+
+										<a href= "{% url 'signin'  %}">
+												<button type="submit"  class="b2">Sign in</button>
+										</a>
+
 									<h3>Heels</h3>
 									<p>For All Walks of Life.</p>
 
@@ -161,8 +185,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li>
 							<div class="banner-top">
 								<div class="banner-info-wthree">
-									  <a href= "{% url 'shoedetails' 1 %}">
-												<button type="submit"  class="b">Sign-in</button>
+
+										<a href= "{% url 'signup'  %}">
+												<button type="submit"  class="b">Sign up</button>
+										</a>
+
+
+										<a href= "{% url 'signin'  %}">
+												<button type="submit"  class="b2">Sign in</button>
 										</a>
 
 									<h3>Athletic</h3>
@@ -175,9 +205,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li>
 							<div class="banner-top1">
 								<div class="banner-info-wthree">
-							      <a href= "{% url 'shoedetails' 1 %}">
-												<button type="submit"  class="b">Sign-in</button>
+
+										<a href= "{% url 'signup'  %}">
+												<button type="submit"  class="b">Sign up</button>
 										</a>
+
+
+										<a href= "{% url 'signin'  %}">
+												<button type="submit"  class="b2">Sign in</button>
+										</a>
+
 
 									<h3>Loafers</h3>
 									<p>Happiness comes in pair.</p>
@@ -189,8 +226,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li>
 							<div class="banner-top">
 								<div class="banner-info-wthree">
-								      <a href= "{% url 'shoedetails' 1 %}">
-												<button type="submit"  class="b">Sign-in</button>
+
+										<a href= "{% url 'signup'  %}">
+												<button type="submit"  class="b">Sign up</button>
+										</a>
+
+
+										<a href= "{% url 'signin'  %}">
+												<button type="submit"  class="b2">Sign in</button>
 										</a>
 
 									<h3>High-neck</h3>

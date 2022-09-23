@@ -1,10 +1,10 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Sum
 from django.http import HttpResponseRedirect , HttpResponse , request
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.urls import reverse_lazy ,reverse
@@ -78,16 +78,23 @@ class Signup(SuccessMessageMixin, CreateView):
 def Signin(request):
     formobj = LoginForm(request.POST or None)
     if formobj.is_valid():
+        redirect_to=request.POST.get('next')
         username1= formobj.cleaned_data.get("username1")
         userobj=User.objects.get(username__iexact=username1)
         login(request,userobj)
         request.session['myusername'] = username1
-        return HttpResponseRedirect(reverse('homepage'))
+        if redirect_to:
+            return redirect(redirect_to)
+        else:
+          return HttpResponseRedirect(reverse('homepage'))
     else:
-        return render(request, "signin.html", {"myform": formobj})
+           return render(request, "signin.html", {"myform": formobj})
 
+def mylogout(request):
+     logout(request)
+     return HttpResponseRedirect(reverse('homepage'))
 
-
+@login_required()
 def checkout(request):
     return render(request,"checkout.html")
 
