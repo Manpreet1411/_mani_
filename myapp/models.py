@@ -10,7 +10,7 @@ class Category(models.Model):
         return self.Category_name
 
 class Product(models.Model):
-    # objects = models.Manager()
+    objects = models.Manager()
 
     Product_name = models.CharField(max_length=200)
     details=RichTextField(null=True, blank=True)
@@ -29,6 +29,8 @@ class Product(models.Model):
 
     def __str__(self):
         return self.Product_name
+
+
 
 class ShoppingCart(models.Model):
     pid = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -56,15 +58,19 @@ class Order(models.Model):
     values2=(('received', 'Order Received'),('process','order in process'),('shipped','order shipped'),('delivered','order delivered'),('pending','Order pending'),('cancelled','order cancelled'))
     order_status=models.CharField(choices=values2, max_length=10, null=True, default='received')
 
-
+    def __str__(self):
+        return "Order No" + str(self.id)
 
 class Order_Details(models.Model):
-
      orderno=models.ForeignKey(Order, on_delete=models.CASCADE)
      product_id=models.ForeignKey(Product, on_delete=models.CASCADE)
      price=models.IntegerField()
      quantity=models.IntegerField()
      total_cost=models.IntegerField()
+
+     def __str__(self):
+         return str(self.orderno)
+
 
 
 

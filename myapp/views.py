@@ -3,15 +3,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Sum
-from django.http import HttpResponseRedirect , HttpResponse , request
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.urls import reverse_lazy ,reverse
 from django.views.generic import CreateView
-
 from myapp.forms import RegisterForm , LoginForm
-from myapp.models import Product, ShoppingCart, Category
+from myapp.models import Product, ShoppingCart, Category ,Order , Order_Details
+
 
 
 def show(request):
@@ -46,8 +44,12 @@ def addtoshoppingcart(request):
 
 
 def showshoppingcart(request):
-    shoppingcartdata=ShoppingCart.objects.filter(sessionid=request.session.session_key)
-    cartsum=ShoppingCart.objects.filter(sessionid=request.session.session_key).aggregate(Sum('total_cost'))
+    if not request.session or not request.session.session_key:
+        request.session.save()
+        request.session["sid"]= request.session.session_key
+    shoppingcartdata=ShoppingCart.objects.filter(sessionid=request.session["sid"])
+    cartsum=ShoppingCart.objects.filter(sessionid=request.session["sid"]).aggregate(Sum('total_cost'))
+    request.session["cartsum"] =cartsum
     return render(request, "shoppingcart.html", {'cartdata': shoppingcartdata, 'cartsum':cartsum})
 
 
@@ -59,7 +61,6 @@ def deleteproduct(request, id):
 def productcategories(request, cid):
     productsdata=Product.objects.filter(category=cid)
     categoryobj=Category.objects.get(id=cid)
-    print(categoryobj)
     return render(request, "category_products.html",{"productsdata":productsdata, "categoryname":categoryobj.Category_name})
 
 
@@ -95,8 +96,54 @@ def mylogout(request):
      return HttpResponseRedirect(reverse('homepage'))
 
 @login_required()
-def checkout(request):
+def mycheckout(request):
     return render(request,"checkout.html")
+
+
+def finalorder(request):
+    username1= request.session['username']
+    name= request.POST.get("name")
+    address= request.POST.get("address")
+    phone=request.POST.get("city")
+    pincode=request.POST.get("pincode")
+    city= request.POST.get("city")
+    state = request.POST.get("state")
+    payment_mode = request.POST.get("paymentmode")
+    gtotal = request.session["cartsum"]
+    grandtotal = gtotal.get("total_cost__sum")
+
+    orderobj=Order()
+    orderobj.username = User.objects.get(username=username1)
+    orderobj.name=name
+    orderobj.address=address
+    orderobj.phone=phone
+    orderobj.payment_mode=payment_mode
+    orderobj.city=city
+    orderobj.state=state
+    orderobj.grandtotal=grandtotal
+    orderobj.pincode= pincode
+    orderobj.save()
+    orderno = Order.objects.latest('id')
+
+    orderdetails =Order_Details()
+    shoppingcartdata= ShoppingCart.objects.filter(sessionid=request.session["sid"])
+    for data in shoppingcartdata:
+        orderdetails.product_id =Product(id=data.pid).id
+        orderdetails.price= data.price
+        orderdetails.quantity = data.quantity
+        orderdetails.total_cost = data.total_cost
+        orderdetails.orderno = orderno
+        orderdetails.save()
+    return render(request, "success.html", {"orderno": orderno})
+
+
+
+
+
+
+
+
+
 
 
 

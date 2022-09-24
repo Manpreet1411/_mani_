@@ -19,62 +19,66 @@
  <div class="page-head_agile_info_w3l">
 
 			<div class="container">
-                <div class="input-group w3_w3layouts">
+                <div class="input-group w3_w3layouts"><br><br>
 				<h3>{{ Checkout }}</h3>
 
                 <form id="form" method="post">
                     {% csrf_token %}
                  <div class="col-md-8 address_form">
-						<h4>Add a new Details</h4>
+					 <br><br>
+						<h4>Add a new Details</h4><br>
 						<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
 							<section class="creditly-wrapper wrapper">
 								<div class="information-wrapper">
 									<div class="first-row form-group">
 										<div class="controls">
-											<label class="control-label">Full name: </label>
-											<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
-										</div>
+                                               <label class="control-label">Name: </label>
+											<input type="text" name="name" required="" placeholder="Enter your full name" class="form-control,control-label">
+
+										</div><br>
 										<div class="card_number_grids">
 											<div class="card_number_grid_left">
 												<div class="controls">
-													<label class="control-label">Mobile number:</label>
-													<input class="form-control" name="phone" type="number" placeholder="Mobile number">
+                                                       <label class="control-label">Phone: </label>
+													<input type="number" name="phone" required="" placeholder="Enter phone no." class="form-control,control-label">
 												</div>
-											</div>
+											</div><br>
 											<div class="card_number_grid_right">
 												<div class="controls">
 													<label class="control-label">Pincode: </label>
-													<input class="form-control" name="pincode" type="text" placeholder="Landmark">
+													<input type="number" name="pincode" required="" placeholder="Enter your pincode" class="form-control,control-label">
 												</div>
 											</div>
 											<div class="clear"> </div>
-										</div>
+										</div><br>
 										<div class="controls">
 											<label class="control-label">Address: </label>
-											<input class="form-control" type="text" placeholder="Address">
-										</div>
+											<textarea  name="address" required="" placeholder="Enter your full address" class="form-control,control-label"></textarea>
+										</div><br>
 										<div class="controls">
 											<label class="control-label">City: </label>
-											<input class="form-control" type="text" name="city" placeholder="Address">
-										</div>
+											<input type="text" name="city" required="" placeholder="Enter your city" class="form-control,control-label">
+										</div><br>
 										<div class="controls">
 											<label class="control-label">State: </label>
-											<input class="form-control" type="text" name="state" placeholder="Address">
-										</div>
+											<input class="form-control" type="text" name="state" placeholder="Enter state name">
+										</div><br>
 										<div class="controls">
 											<label class="control-label">Payment mode: </label>
-											<select class="form-control option-w3ls">
+											<select class="form-control option-w3ls, form-control " name="paymentmode">
 																							<option value="cod"> Cash on delivery</option>
-																							<option value="cod">Google pay on 123 </option>
+																							<option value="gpay">Google pay on 123 </option>
 
+																					</select><br>
 
-																					</select>
 										</div>
 									</div>
 
-									<button class="submit check_out" name="submit" value="Checkout"></button>
+
 								</div>
 							</section>
+							<br> <br>
+							<input type="submit"  style="height:50" class="btn btn-success" name="submit" value="Checkout"></input>
 						</form>
 
 					</div>
