@@ -38,7 +38,8 @@ def addtoshoppingcart(request):
     shoppingcartobj.total_cost=totalcost
     if not request.session or not request.session.session_key:
         request.session.save()
-    shoppingcartobj.sessionid= request.session.session_key
+        request.session["sid"] = request.session.session_key
+    shoppingcartobj.sessionid= request.session["sid"]
     shoppingcartobj.save()
     return HttpResponseRedirect(reverse_lazy('shoppingcart'))
 

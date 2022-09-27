@@ -16,6 +16,6 @@ urlpatterns = [
     path('sign-in', views.Signin, name='signin'),
     path('check-out', views.mycheckout, name='checkout'),
     path('sign-out', views.mylogout, name='logout'),
-
+    path('order', views.finalorder, name='finalorder'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

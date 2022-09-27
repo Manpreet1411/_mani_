@@ -39,7 +39,7 @@
 							<li><a href="{% url 'homepage'   %}" class="active">Home</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="404.html">Team</a></li>
-							<li><a href="shop.html">Shop Now</a></li>
+							<li><a href="{% url 'productdetails'  %}">Shop Now</a></li>
 							<li><a href="contact.html">Contact</a></li>
 								<li class='sub-menu'><a href='#settings'>Categories<div class='fa fa-caret-down right'></div></a>
                              	<ul>
@@ -55,11 +55,11 @@
 				<!-- cart details -->
 				           <div class="top_nav_right">
 							   <div class="shoecart shoecart2 cart cart box_1">
-						<form action="#" method="post" class="last">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
-							<button class="top_shoe_cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-						</form>
+						<div class="shoecart shoecart2 cart cart box_1">
+
+							<a href= "{% url 'shoppingcart'  %}"><button class="top_shoe_cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button></a>
+
+					</div>
 					</div>
 				</div>
 			</div>

@@ -1,12 +1,14 @@
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
+
 	{% block title%} {%endblock%}
 
 	{% load static %}
-	<title>Downy Shoes an Ecommerce Category Bootstrap Responsive Website Template | Home :: w3layouts</title>
-	<!-- custom-theme -->
+	<title>Downy Shoes an Ecommerce Category Bootstrap Responsive Website Template | Single :: w3layouts</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -19,8 +21,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
-
-
 	</script>
 
 <style>
@@ -31,13 +31,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
       .b2{position: absolute; top: 6.5%; left: 77%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
 </style>
-	<style>
-
-      .b3{position: absolute; top: 6.5%; left: 78%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-
-
-	<!-- //custom-theme -->
+		<!-- //custom-theme -->
 	<link href="{%static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="{%static 'css/shop.css' %}" type="text/css" media="screen" property="" />
 	<link href="{%static 'css/style7.css' %}" rel="stylesheet" type="text/css" media="all" />
@@ -52,13 +46,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 	<!-- banner -->
-
-
-	<div class="banner_top" id="home">
+	<div class="banner_top innerpage" id="home">
 		<div class="wrapper_top_w3layouts">
-
 			<div class="header_agileits">
-				<div class="logo">
+				<div class="logo inner_page_log">
 					<h1><a class="navbar-brand" href="index.html"><span>Downy</span> <i>Shoes</i></a></h1>
 				</div>
 				<div class="overlay overlay-contentpush">
@@ -66,28 +57,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<nav>
 						<ul>
-
 							<li><a href="{% url 'homepage' %}" class="active">Home</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="404.html">Team</a></li>
 							<li><a href="{% url 'productdetails'  %}">Shop Now</a></li>
 							<li><a href="contact.html">Contact</a></li>
-
-
-                          	<li class='sub-menu'><a href='#'>Categories<div class='fa fa-caret-down right'></div></a>
+								<li class='sub-menu'><a href='#'>Categories<div class='fa fa-caret-down right'></div></a>
                             	<ul>
 									{% fetch_categories %}
-
-							</ul>
-                   		</li>
 						</ul>
-
-
-
-
-
-
-
+						</li>
+						</ul>
 					</nav>
 				</div>
 				<div class="mobile-nav-button">
@@ -96,197 +76,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="shoecart shoecart2 cart cart box_1">
-						<div class="shoecart shoecart2 cart cart box_1">
 
 							<a href= "{% url 'shoppingcart'  %}"><button class="top_shoe_cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button></a>
 
 					</div>
-					</div>
-
 				</div>
-				<!-- //cart details -->
-				<!-- search -->
-				<div class="search_w3ls_agileinfo">
-					<div class="cd-main-header">
-						<ul class="cd-header-buttons">
-							<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-						</ul>
-					</div>
-					<div id="cd-search" class="cd-search">
-						<form action="#" method="post">
-							<input name="Search" type="search" placeholder="Click enter after typing...">
-						</form>
-					</div>
-				</div>
-
-
-									<!-- //search -->
-
-
-
-
-
-
-				<div class="clearfix"></div>
 			</div>
-			<!-- /slider -->
-			<div class="slider">
-				<div class="callbacks_container">
-
-					<ul class="rslides callbacks callbacks1" id="slider4">
-
-						<li>
-							<div class="banner-top2">
-
-								<div class="banner-info-wthree">
-									    {% if user.is_authenticated %}
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-
-
-
-
-
-
-										<h3>Skateboard</h3>
-										<p>Good shoes take you good places.</p>
-
-								</div>
-
-							</div>
-						</li>
-						<li>
-							<div class="banner-top3">
-
-								<div class="banner-info-wthree">
-
-										 {% if user.is_authenticated %}
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-									<h3>Heels</h3>
-									<p>For All Walks of Life.</p>
-
-								</div>
-
-							</div>
-						</li>
-						<li>
-							<div class="banner-top">
-								<div class="banner-info-wthree">
-
-										 {% if user.is_authenticated %}
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-
-									<h3>Athletic</h3>
-									<p>See how good they feel.</p>
-
-								</div>
-
-							</div>
-						</li>
-						<li>
-							<div class="banner-top1">
-								<div class="banner-info-wthree">
-
-										 {% if user.is_authenticated %}
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-
-
-									<h3>Loafers</h3>
-									<p>Happiness comes in pair.</p>
-
-								</div>
-
-							</div>
-						</li>
-						<li>
-							<div class="banner-top">
-								<div class="banner-info-wthree">
-
-										 {% if user.is_authenticated %}
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-
-									<h3>High-neck</h3>
-									<p>See how good they feel.</p>
-
-								</div>
-
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<!-- //slider -->
-			<ul class="top_icons">
-				<li><a href="#"><span class="fa fa-facebook" aria-hidden="true"></span></a></li>
-				<li><a href="#"><span class="fa fa-twitter" aria-hidden="true"></span></a></li>
-				<li><a href="#"><span class="fa fa-linkedin" aria-hidden="true"></span></a></li>
-				<li><a href="#"><span class="fa fa-google-plus" aria-hidden="true"></span></a></li>
-
-			</ul>
 		</div>
+		<!-- //cart details -->
+		<!-- search -->
+		<div class="search_w3ls_agileinfo">
+			<div class="cd-main-header">
+				<ul class="cd-header-buttons">
+					<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+				</ul>
+			</div>
+			<div id="cd-search" class="cd-search">
+				<form action="#" method="post">
+					<input name="Search" type="search" placeholder="Click enter after typing...">
+				</form>
+			</div>
+		</div>
+		<!-- //search -->
+		<div class="clearfix"></div>
+		<!-- /banner_inner -->
+		<div class="services-breadcrumb_w3ls_agileinfo">
+			<div class="inner_breadcrumb_agileits_w3">
+
+				<ul class="short">
+					<li><a href="index.html">Home</a><i>|</i></li>
+					<li>Single</li>
+				</ul>
+			</div>
+		</div>
+		<!-- //banner_inner -->
 	</div>
+
+
+<!--	sign in and sign up button========================-->
+
+				<a href= "{% url 'signup'  %}">
+												<button type="submit"  class="b">Sign-up</button>
+										</a>
+
+
+	<a href= "{% url 'signin'  %}">
+												<button type="submit"  class="b2">Sign-in</button>
+										</a>
 	<!-- //banner -->
 {% block content %}
 {% endblock %}
 
+	<div class="mid_slider_w3lsagile">
 
-<!--footer-->
-<!-- /newsletter-->
+
+
+		<div class="clearfix"> </div>
+	</div>
+	<!-- /newsletter-->
 	<div class="newsletter_w3layouts_agile">
 		<div class="col-sm-6 newsleft">
 			<h3>Sign up for Newsletter !</h3>
@@ -403,7 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="clearfix"></div>
 
-			<p class="copy-right-w3ls-agileits">&copy 2018 Downy Shoes. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+			<p class="copy-right-w3ls-agileits">&copy 2018 Downy Shoes. All rights reserved | Design by <a href="http://w3layouts.com/">w3layouts</a></p>
 		</div>
 	</div>
 
@@ -412,11 +259,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- js -->
 	<script type="text/javascript" src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
 	<!-- //js -->
-	<!-- /nav -->
-	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
-	<script src="{% static 'js/classie.js' %}"></script>
-	<script src="{% static 'js/demo1.js' %}"></script>
-	<!-- //nav -->
 	<!-- cart-js -->
 	<script src="{% static 'js/minicart.js' %}"></script>
 	<script>
@@ -433,28 +275,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- //cart-js -->
-	<!--search-bar-->
-	<script src="{% static 'js/search.js' %}"></script>
-	<!--//search-bar-->
-	<script src="{% static 'js/responsiveslides.min.js' %}"></script>
+	<!-- /nav -->
+	<script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+	<script src="{% static 'js/classie.js' %}"></script>
+	<script src="{% static 'js/demo1.js' %}"></script>
+	<!-- //nav -->
+	<!-- single -->
+	<script src="{% static 'js/minicart.js' %}"></script>
+	<!-- single -->
+	<!-- script for responsive tabs -->
+	<script src="js/easy-responsive-tabs.js"></script>
 	<script>
-		$(function () {
-			$("#slider4").responsiveSlides({
-				auto: true,
-				pager: true,
-				nav: true,
-				speed: 1000,
-				namespace: "callbacks",
-				before: function () {
-					$('.events').append("<li>before event fired.</li>");
-				},
-				after: function () {
-					$('.events').append("<li>after event fired.</li>");
+		$(document).ready(function () {
+			$('#horizontalTab').easyResponsiveTabs({
+				type: 'default', //Types: default, vertical, accordion
+				width: 'auto', //auto or any width like 600px
+				fit: true, // 100% fit in a container
+				closed: 'accordion', // Start closed if in accordion view
+				activate: function (event) { // Callback function if tab is switched
+					var $tab = $(this);
+					var $info = $('#tabInfo');
+					var $name = $('span', $info);
+					$name.text($tab.text());
+					$info.show();
 				}
+			});
+			$('#verticalTab').easyResponsiveTabs({
+				type: 'vertical',
+				width: 'auto',
+				fit: true
 			});
 		});
 	</script>
-	<!-- js for portfolio lightbox -->
+	<!-- FlexSlider -->
+	<script src="{% static 'js/jquery.flexslider.js' %}"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function () {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				controlNav: "thumbnails"
+			});
+		});
+	</script>
+	<!-- //FlexSlider-->
+
+	<!--search-bar-->
+	<script src="js/search.js"></script>
+	<!--//search-bar-->
 	<!-- start-smoth-scrolling -->
 	<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
@@ -466,30 +334,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					scrollTop: $(this.hash).offset().top
 				}, 1000);
 			});
-		})
+		});
 	</script>
 	<!-- //end-smoth-scrolling -->
+		<script type="text/javascript" src="{% static 'js/bootstrap-3.1.1.min.js' %}"></script>
 
-	<script type="text/javascript" src="{% static 'js/bootstrap-3.1.1.min.js' %}"></script>
-
-<!--	catgories sub-menu-->
-<script>
-$('.sub-menu ul').hide();
-$(".sub-menu a").click(function () {
-	$(this).parent(".sub-menu").children("ul").slideToggle("100");
-	$(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
-});
-</script>
 
 
 </body>
 
 </html>
-
-
-
-
-
-
-
-

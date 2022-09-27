@@ -23,11 +23,12 @@
 				<h3>{{ Checkout }}</h3>
 
                 <form id="form" method="post">
-                    {% csrf_token %}
+
                  <div class="col-md-8 address_form">
 					 <br><br>
 						<h4>Add a new Details</h4><br>
-						<form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+						<form action="{% url 'finalorder' %}" method="post" class="creditly-card-form agileinfo_form">
+							{% csrf_token %}
 							<section class="creditly-wrapper wrapper">
 								<div class="information-wrapper">
 									<div class="first-row form-group">
@@ -78,7 +79,7 @@
 								</div>
 							</section>
 							<br> <br>
-							<input type="submit"  style="height:50" class="btn btn-success" name="submit" value="Checkout"></input>
+							<input type="submit"  style="height:50" class="btn btn-success" name="submit" value="Checkout">
 						</form>
 
 					</div>
@@ -96,6 +97,7 @@
                 {% endif %}
             </div>
          </div>
+
 
 {% endblock %}
 
