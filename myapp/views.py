@@ -1,4 +1,5 @@
-from django.contrib.auth import login, logout
+from django.contrib import messages
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
@@ -26,7 +27,7 @@ def showshoesdetails1(request,pid):
         return render(request, "singleproductdetails.html",  {'shoe_details_data': shoe_details })
 
 def addtoshoppingcart(request):
-    pid= int(request.POST.get('item_id'))
+    pid= int(request.POST.get("item_id"))
     price=int(float(request.POST.get("amount")))
     quantity=int(request.POST.get("quantity"))
     totalcost= price * quantity
@@ -85,6 +86,9 @@ def Signin(request):
         userobj=User.objects.get(username__iexact=username1)
         login(request,userobj)
         request.session['myusername'] = username1
+        request.session['emailid'] = userobj.email
+        if not "sid" in request.session:
+             request.session["sid"] = request.session.session_key
         if redirect_to:
             return redirect(redirect_to)
         else:
@@ -102,10 +106,10 @@ def mycheckout(request):
 
 
 def finalorder(request):
-    username1= request.session['username']
+    username1= request.session['myusername']
     name= request.POST.get("name")
     address= request.POST.get("address")
-    phone=request.POST.get("city")
+    phone=request.POST.get("phone")
     pincode=request.POST.get("pincode")
     city= request.POST.get("city")
     state = request.POST.get("state")
@@ -126,18 +130,66 @@ def finalorder(request):
     orderobj.save()
     orderno = Order.objects.latest('id')
 
-    orderdetails =Order_Details()
+
     shoppingcartdata= ShoppingCart.objects.filter(sessionid=request.session["sid"])
     for data in shoppingcartdata:
+        orderdetails=Order_Details()
         orderdetails.product_id =Product(id=data.pid).id
         orderdetails.price= data.price
         orderdetails.quantity = data.quantity
-        orderdetails.total_cost = data.total_cost
-        orderdetails.orderno = orderno
+        orderdetails.total_cost= data.total_cost
+        orderdetails.orderno= orderno
         orderdetails.save()
-    return render(request, "success.html", {"orderno": orderno})
+    shoppingcartdata.delete()
 
 
+
+
+
+
+def showordersucess(request):
+    userobj = User.objects.get(username=request.session["myusername"])
+    ordersdata= Order.objects.filter(username=userobj).order_by('-id')[:1]
+    result= request.session["result"]
+    if result == 1:
+        return render(request, "success.html", {'orderno': ordersdata[0]} )
+    else:
+         return render (request , "success.html", {'orderno': ordersdata[0], "error" : "Error occured . We will send you confirmation mail after a short while."})
+
+def orderhistory(request):
+    userobj= User.objects.get(username=request.session["myusername"])
+    ordersdata = Order.objects.filter(username=userobj)
+    return render(request, "orderhistory.html", {'ordersdata':ordersdata})
+
+def orderdetails(request, oid):
+    orderdetailsdata= Order_Details.objects.filter(orderno=oid)
+    return render(request, "orderdetails.html", {'orderdetailsdata': orderdetailsdata})
+
+
+
+def changepass(request):
+    if request.method == "POST":
+        myformdata= request.POST
+        oldpassword= myformdata.get("oldpassword", "0")
+        newpass1 =  myformdata.get("password1", "1")
+        newpass2 =  myformdata.get("password2", "2")
+        if newpass1 == newpass2 :
+            myusername = request.session["username"]
+            userobj = authenticate(username = myusername, password= oldpassword)
+            if userobj is not None:
+                userobj.set_password(newpass2)
+                userobj.save()
+                logout(request)
+                messages.success(request, 'Password changed successfully. Login again')
+                return HttpResponseRedirect(reverse('signin'))
+            else:
+                mymessage = {"messages" : "Wrong old password"}
+                return render(request, "changepassword.html", mymessage)
+        else:
+            mymessage={"messages": "New password does not match ! Try again"}
+            return render(request, "changepassword.html", mymessage)
+    else:
+        return render(request, "changepassword.html")
 
 
 

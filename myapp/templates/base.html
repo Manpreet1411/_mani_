@@ -5,6 +5,7 @@
 	{% block title%} {%endblock%}
 
 	{% load static %}
+	{% load my_filters %}
 	<title>Downy Shoes an Ecommerce Category Bootstrap Responsive Website Template | Home :: w3layouts</title>
 	<!-- custom-theme -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,7 +36,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
       .b3{position: absolute; top: 6.5%; left: 78%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
 </style>
+<style>
 
+      .b4{position: absolute; top: 6.5%; left: 72%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+</style>
+<style>
+
+      .b5{position: absolute; top: 6.5%; left: 65%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+</style>
+<style>
+
+      .b6{position: absolute; top: 6.5%; left: 58%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+</style>
 
 	<!-- //custom-theme -->
 	<link href="{%static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
@@ -139,7 +151,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="banner-top2">
 
 								<div class="banner-info-wthree">
+									   <h3>Skateboard</h3>
+						                  <p>Good shoes take you good places.</p>
 									    {% if user.is_authenticated %}
+
 									    <a href= "{% url 'logout'  %}">
 													<button type="submit"  class="b3">Logout</button>
 											</a>
@@ -152,14 +167,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<button type="submit"  class="b">Sign up</button>
 										</a>
 									    {% endif %}
+									    {% if user.is_authenticated %}o
+									    <a href= "{% url 'orderhistory'  %}">
+												<button type="submit"  class="b4">Order History</button>
+									    {% else %}
+                                               <h5> call</h5>
+										{% endif %}
+										{% if user.is_authenticated %}
+											 <a href= "{% url 'changepassword'  %}">
+												<button type="submit"  class="b5">Change Password</button>
+										{% else %}
+                                                <h5> call</h5>
+										{% endif %}
 
 
-
-
-
-
-										<h3>Skateboard</h3>
-										<p>Good shoes take you good places.</p>
 
 								</div>
 
@@ -170,7 +191,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<div class="banner-info-wthree">
 
-										 {% if user.is_authenticated %}
+									{% if user.is_authenticated %}
+
 									    <a href= "{% url 'logout'  %}">
 													<button type="submit"  class="b3">Logout</button>
 											</a>
@@ -183,6 +205,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<button type="submit"  class="b">Sign up</button>
 										</a>
 									    {% endif %}
+									    {% if user.is_authenticated %}
+									    <a href= "{% url 'orderhistory'  %}">
+												<button type="submit"  class="b4">Order History</button>
+									    {% else %}
+
+										{% endif %}
+										{% if user.is_authenticated %}
+											 <a href= "{% url 'changepassword'  %}">
+												<button type="submit"  class="b5">Change Password</button>
+										{% else %}
+
+										{% endif %}
+
 									<h3>Heels</h3>
 									<p>For All Walks of Life.</p>
 
@@ -194,7 +229,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="banner-top">
 								<div class="banner-info-wthree">
 
-										 {% if user.is_authenticated %}
+									{% if user.is_authenticated %}
+
 									    <a href= "{% url 'logout'  %}">
 													<button type="submit"  class="b3">Logout</button>
 											</a>
@@ -207,6 +243,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<button type="submit"  class="b">Sign up</button>
 										</a>
 									    {% endif %}
+									    {% if user.is_authenticated %}
+									    <a href= "{% url 'orderhistory'  %}">
+												<button type="submit"  class="b4">Order History</button>
+									    {% else %}
+
+										{% endif %}
+										{% if user.is_authenticated %}
+											 <a href= "{% url 'changepassword'  %}">
+												<button type="submit"  class="b5">Change Password</button>
+										{% else %}
+
+
+
+										{% endif %}
 
 									<h3>Athletic</h3>
 									<p>See how good they feel.</p>
@@ -216,10 +266,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</li>
 						<li>
+
 							<div class="banner-top1">
 								<div class="banner-info-wthree">
+                                   {% if user.is_authenticated %}
 
-										 {% if user.is_authenticated %}
 									    <a href= "{% url 'logout'  %}">
 													<button type="submit"  class="b3">Logout</button>
 											</a>
@@ -232,6 +283,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<button type="submit"  class="b">Sign up</button>
 										</a>
 									    {% endif %}
+									    {% if user.is_authenticated %}
+									    <a href= "{% url 'orderhistory'  %}">
+												<button type="submit"  class="b4">Order History</button>
+									    {% else %}
+
+										{% endif %}
+										{% if user.is_authenticated %}
+											 <a href= "{% url 'changepassword'  %}">
+												<button type="submit"  class="b5">Change Password</button>
+										{% else %}
+
+
+										{% endif %}
 
 
 									<h3>Loafers</h3>
@@ -244,8 +308,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li>
 							<div class="banner-top">
 								<div class="banner-info-wthree">
+										<h3>High-neck</h3>
+												<p>See how good they feel.</p>
 
-										 {% if user.is_authenticated %}
+									{% if user.is_authenticated %}
+
 									    <a href= "{% url 'logout'  %}">
 													<button type="submit"  class="b3">Logout</button>
 											</a>
@@ -258,9 +325,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<button type="submit"  class="b">Sign up</button>
 										</a>
 									    {% endif %}
+									    {% if user.is_authenticated %}
+									    <a href= "{% url 'orderhistory'  %}">
+												<button type="submit"  class="b4">Order History</button>
+									    {% else %}
 
-									<h3>High-neck</h3>
-									<p>See how good they feel.</p>
+										{% endif %}
+										{% if user.is_authenticated %}
+											 <a href= "{% url 'changepassword'  %}">
+												<button type="submit"  class="b5">Change Password</button>
+										{% else %}
+
+										{% endif %}
+
+
+
 
 								</div>
 
@@ -268,9 +347,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</li>
 					</ul>
 				</div>
+
 				<div class="clearfix"> </div>
 			</div>
+
 			<!-- //slider -->
+
 			<ul class="top_icons">
 				<li><a href="#"><span class="fa fa-facebook" aria-hidden="true"></span></a></li>
 				<li><a href="#"><span class="fa fa-twitter" aria-hidden="true"></span></a></li>
@@ -280,6 +362,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 		</div>
 	</div>
+
 	<!-- //banner -->
 {% block content %}
 {% endblock %}
