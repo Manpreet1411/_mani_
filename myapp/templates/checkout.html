@@ -12,92 +12,55 @@
     {
        width:250px;
     }
-
 </style>
-
 
  <div class="page-head_agile_info_w3l">
 
 			<div class="container">
-                <div class="input-group w3_w3layouts"><br><br>
-				<h3>{{ Checkout }}</h3>
+       <div class="col-md-8">
+           <h3> Checkout</h3><br><br>
+           		<h4>Add a new Details</h4><br>
+        <br>
+            <form action="{% url 'finalorder' %}" method="post" >
+       {% csrf_token %}
+                <label>Name :</label>
+                 <input type="text"  name="name" required="" placeholder="Enter your full name"  class="form-control,control-label">
+               <br><br>
+                 <label>Phone :</label>
+                   <input type="number"  name="phone" required="" placeholder="Enter phone no." class="form-control,control-label">
+               <br><br>
+                 <label>Pincode :</label>
+                   <input type="number" name="pincode" required="" placeholder="Enter your pincode" class="form-control,control-label">
+               <br><br>
+                 <label>Address:</label>
+                <textarea rows="5"    name="address"  required="" placeholder="Enter your address"  class="form-control"></textarea>
+               <br><br>
+                 <label>City:</label>
+                   <input type="text" name="city" required="" placeholder="Enter city name"  class="form-control,control-label">
+               <br><br>
+                 <label>State :</label>
+                   <input type="text" name="state" required="" placeholder="Enter state name"  class="form-control,control-label">
+               <br><br>
+                 <label>Payment mode :</label>
+                   <select  name="paymentmode" required="" class="form-control,control-label">
+                            <option > Choose Payment Mode</option>
+                         <option value="cod"> Cash on delivery</option>
+						<option value="gpay">Google pay on 123 </option>
+                   </select>
+               <br><br>
 
-                <form id="form" method="post">
+                     <input type="submit" name="submit" value="Checkout" class="btn btn-success">  <br><br>
+            </form>
+       </div>
 
-                 <div class="col-md-8 address_form">
-					 <br><br>
-						<h4>Add a new Details</h4><br>
-						<form action="{% url 'finalorder' %}" method="post" class="creditly-card-form agileinfo_form">
-							{% csrf_token %}
-							<section class="creditly-wrapper wrapper">
-								<div class="information-wrapper">
-									<div class="first-row form-group">
-										<div class="controls">
-                                               <label class="control-label">Name: </label>
-											<input type="text" name="name" required="" placeholder="Enter your full name" class="form-control,control-label">
-
-										</div><br>
-										<div class="card_number_grids">
-											<div class="card_number_grid_left">
-												<div class="controls">
-                                                       <label class="control-label">Phone: </label>
-													<input type="number" name="phone" required="" placeholder="Enter phone no." class="form-control,control-label">
-												</div>
-											</div><br>
-											<div class="card_number_grid_right">
-												<div class="controls">
-													<label class="control-label">Pincode: </label>
-													<input type="number" name="pincode" required="" placeholder="Enter your pincode" class="form-control,control-label">
-												</div>
-											</div>
-											<div class="clear"> </div>
-										</div><br>
-										<div class="controls">
-											<label class="control-label">Address: </label>
-											<textarea  name="address" required="" placeholder="Enter your full address" class="form-control,control-label"></textarea>
-										</div><br>
-										<div class="controls">
-											<label class="control-label">City: </label>
-											<input type="text" name="city" required="" placeholder="Enter your city" class="form-control,control-label">
-										</div><br>
-										<div class="controls">
-											<label class="control-label">State: </label>
-											<input class="form-control" type="text" name="state" placeholder="Enter state name">
-										</div><br>
-										<div class="controls">
-											<label class="control-label">Payment mode: </label>
-											<select class="form-control option-w3ls, form-control " name="paymentmode">
-																							<option value="cod"> Cash on delivery</option>
-																							<option value="gpay">Google pay on 123 </option>
-
-																					</select><br>
-
-										</div>
-									</div>
+						{% if messages %}
+						<ul class="messages">
+							<li> {{messages}}</li>
+						</ul>
+						{% endif %}
 
 
-								</div>
-							</section>
-							<br> <br>
-							<input type="submit"  style="height:50" class="btn btn-success" name="submit" value="Checkout">
-						</form>
-
-					</div>
-                 </div>
-
-
-
-
-                {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            </div>
-         </div>
-
+                </div>
+     </div>
 
 {% endblock %}
-

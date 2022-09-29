@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.mail import message, EmailMultiAlternatives
 from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -10,8 +11,7 @@ from django.urls import reverse_lazy ,reverse
 from django.views.generic import CreateView
 from myapp.forms import RegisterForm , LoginForm
 from myapp.models import Product, ShoppingCart, Category ,Order , Order_Details
-
-
+from webproject1 import settings
 
 def show(request):
         return render(request, "index.html")
@@ -135,12 +135,25 @@ def finalorder(request):
     for data in shoppingcartdata:
         orderdetails=Order_Details()
         orderdetails.product_id =Product(id=data.pid).id
+
         orderdetails.price= data.price
         orderdetails.quantity = data.quantity
         orderdetails.total_cost= data.total_cost
         orderdetails.orderno= orderno
         orderdetails.save()
     shoppingcartdata.delete()
+
+    # message= EmailMultiAlternatives(
+    #     "Message from Downy shoes",
+    #     "Your order has been placed successfully . Your Order No. is "+str(orderno),
+    # to = [request.session['emailid']],
+    #      from_email=settings.EMAIL_HOST_USER,
+    #                 reply_to=['djangowebproject@outlook.com'] )
+    #
+    # result= message.send(fail_silently=False)
+    # request.session["result"]= result
+    return HttpResponseRedirect(reverse_lazy('ordersuccess'))
+
 
 
 
@@ -150,11 +163,13 @@ def finalorder(request):
 def showordersucess(request):
     userobj = User.objects.get(username=request.session["myusername"])
     ordersdata= Order.objects.filter(username=userobj).order_by('-id')[:1]
-    result= request.session["result"]
-    if result == 1:
-        return render(request, "success.html", {'orderno': ordersdata[0]} )
-    else:
-         return render (request , "success.html", {'orderno': ordersdata[0], "error" : "Error occured . We will send you confirmation mail after a short while."})
+    # result= request.session["result"]
+    # if result == 1:
+    return render(request, "success.html", {'orderno': ordersdata[0]} )
+    # else:
+    #      # mymessage = {"messages": "order not placed"}
+    #      return render (request , "success.html", {'orderno': ordersdata[0], "error" : "Error occured . We will send you confirmation mail after a short while."})
+    #      # return render(request, "success.html", mymessage)
 
 def orderhistory(request):
     userobj= User.objects.get(username=request.session["myusername"])
@@ -174,7 +189,7 @@ def changepass(request):
         newpass1 =  myformdata.get("password1", "1")
         newpass2 =  myformdata.get("password2", "2")
         if newpass1 == newpass2 :
-            myusername = request.session["username"]
+            myusername = request.session["myusername"]
             userobj = authenticate(username = myusername, password= oldpassword)
             if userobj is not None:
                 userobj.set_password(newpass2)

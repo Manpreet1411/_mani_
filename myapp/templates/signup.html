@@ -11,7 +11,7 @@
 <style type="text/css">
     #form input
     {
-       width:150px;
+       width:200px;
     }
 
 </style>
@@ -19,14 +19,14 @@
          <div class="page-head_agile_info_w3l">
 
 			<div class="container">
-                <div class="input-group w3_w3layouts">
+                <div class="col-md-12">
 				<h3>{{ Signup }}</h3>
 
                 <form id="form" method="post"  >
                     {% csrf_token %}
                 {{ form.as_p }}
                     <br>
-                    <input type="submit" name="submit" value="Signup">
+                    <input type="submit" name="submit" value="Signup" class="btn btn-success" >
                 </form>
                   </div>
 

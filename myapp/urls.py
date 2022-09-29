@@ -19,7 +19,7 @@ urlpatterns = [
     path('order', views.finalorder, name='finalorder'),
     path('order-success', views.showordersucess, name='ordersuccess'),
     path('order-history', views.orderhistory, name='orderhistory'),
-    # path('order-details/<int:oid>', views.orderdetails, name='showorderdetails'),
+    path('order-details/<int:oid>', views.orderdetails, name='showorderdetails'),
     path('change-password', views.changepass, name='changepassword'),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
