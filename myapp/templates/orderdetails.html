@@ -1,0 +1,54 @@
+{% extends "bn.html" %}
+{% load static %}
+{% block title %}
+<title>Order details</title>
+{% endblock %}
+{% block content %}
+
+          <div class="container">
+           <br>
+           <h2>Order details</h2>
+            {% if orderdetailsdata %}
+           <br>
+
+           <table id="t" width="100%" class="table table-primary table-hover table-bordered border-dark, js-serial">
+
+
+               <tr bgcolor="black"  style="color:white">
+                   <th>Product image</th>
+                   <th>Product ID</th>
+                   <th>Price</th>
+                   <th> Quantity</th>
+                   <th> Total cost</th>
+                   <th> Order no.</th>
+
+               </tr>
+
+               {% for data in ordersdetailsdata %}
+               <tr>
+                   <td> <img src="{{ data.product_id.Product_pic.url }}" width="90px">  </td>
+                   <td>{{ data.product_id}}</td>
+                   <td>{{ data.price}}</td>
+                   <td>{{ data.quantity}}</td>
+                   <td>{{ data.total_cost}}</td>
+                   <td>{{ data.orderno}}</td>
+
+
+               </tr>
+                 <tr><td>&nbsp;</td></tr>
+               {% endfor %}
+
+
+
+                        <tr><td><br></td></tr>
+
+
+           </table>
+           {% else %}
+           <br>
+           <h4>No orders available </h4>
+           <br>
+           {% endif %}
+       </div>
+{% endblock %}
+
