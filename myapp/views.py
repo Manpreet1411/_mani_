@@ -143,15 +143,15 @@ def finalorder(request):
         orderdetails.save()
     shoppingcartdata.delete()
 
-    # message= EmailMultiAlternatives(
-    #     "Message from Downy shoes",
-    #     "Your order has been placed successfully . Your Order No. is "+str(orderno),
-    # to = [request.session['emailid']],
-    #      from_email=settings.EMAIL_HOST_USER,
-    #                 reply_to=['djangowebproject@outlook.com'] )
-    #
-    # result= message.send(fail_silently=False)
-    # request.session["result"]= result
+    message= EmailMultiAlternatives(
+        "Message from Downy shoes",
+        "Your order has been placed successfully . Your Order No. is "+str(orderno),
+    to = [request.session['emailid']],
+         from_email=settings.EMAIL_HOST_USER,
+                    reply_to=['djangowebproject@outlook.com'] )
+
+    result= message.send(fail_silently=False)
+    request.session["result"]= result
     return HttpResponseRedirect(reverse_lazy('ordersuccess'))
 
 
@@ -163,13 +163,13 @@ def finalorder(request):
 def showordersucess(request):
     userobj = User.objects.get(username=request.session["myusername"])
     ordersdata= Order.objects.filter(username=userobj).order_by('-id')[:1]
-    # result= request.session["result"]
-    # if result == 1:
-    return render(request, "success.html", {'orderno': ordersdata[0]} )
-    # else:
-    #      # mymessage = {"messages": "order not placed"}
-    #      return render (request , "success.html", {'orderno': ordersdata[0], "error" : "Error occured . We will send you confirmation mail after a short while."})
-    #      # return render(request, "success.html", mymessage)
+    result= request.session["result"]
+    if result == 1:
+        return render(request, "success.html", {'orderno': ordersdata[0]} )
+    else:
+         # mymessage = {"messages": "order not placed"}
+         return render (request , "success.html", {'orderno': ordersdata[0], "error" : "Error occured . We will send you confirmation mail after a short while."})
+         # return render(request, "success.html", mymessage)
 
 def orderhistory(request):
     userobj= User.objects.get(username=request.session["myusername"])

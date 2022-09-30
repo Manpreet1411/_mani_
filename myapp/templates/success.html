@@ -8,8 +8,14 @@
             <div class="banner-bottom-w3-agileits">
                 <div class="container">
                     <div class="col-md-12">
-                         <br><br><h4 align="center"> YO! Your Order is Successful. Your Order number is {{orderno}}</h4><br><br>
+                         <br><br><h4  style="font-family:cursive" align="center"> YO!  {{user}} , Your Order is Successful.  {{orderno}}</h4><br><br>
+                            {% if error %}
+                                   <h4 align="center">{{ error }}</h4>
+                            {% else %}
+                                  <h4 style="font-family:cursive" align= "center"> We have sent a confirmation  email to you. </h4>
+                            {% endif %} <br><br><br><br>
                     </div>
+
                 </div>
             </div>
 

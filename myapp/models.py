@@ -59,7 +59,7 @@ class Order(models.Model):
     order_status=models.CharField(choices=values2, max_length=10, null=True, default='received')
 
     def __str__(self):
-        return "Order No" + str(self.id)
+        return "Order No" +":"+   str(self.id)
 
 class Order_Details(models.Model):
      orderno=models.ForeignKey(Order, on_delete=models.CASCADE)

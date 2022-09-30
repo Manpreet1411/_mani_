@@ -153,7 +153,7 @@ MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 MEDIA_URL="/shoes_photos/"
 LOGIN_URL="signin"
 
-EMAIL_HOST =  " smtp.office365.com"
+EMAIL_HOST =  "smtp.office365.com"
 EMAIL_HOST_USER="djangowebproject@outlook.com"
 EMAIL_HOST_PASSWORD="#myapp899"
 EMAIL_PORT=587

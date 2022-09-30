@@ -18,14 +18,21 @@
 
 			<div class="container" >
                 <div class="col-md-12">
+                    <br><br>
+                    <h3>Sign-in </h3>
+                    <br><br>
+
                 <div class="input-group w3_w3layouts">
-				<h3>{{ Signin }}</h3>
+
 
                 <form id="form" method="post" >
+
                     {% csrf_token %}
                 {{ myform.as_p }}
-                    <input type="submit" name="submit" value="Signin">
+                    <br><br>
+                    <input type="submit" name="submit" class="btn btn-primary" value="Sign-in">
                 </form>
+                    <br><br>
                   </div>
 
                 {% if messages %}
