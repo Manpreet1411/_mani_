@@ -2,16 +2,27 @@ from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.http import request
+from myapp.models import Profile
+
+# from myapp.models import Profile
 
 
 class RegisterForm(forms.ModelForm):
     username=forms.CharField(label="Username", max_length=100)
     password1=forms.CharField(label="Password", widget=forms.PasswordInput)
     password2=forms.CharField(label="Confirm Password", widget=forms.PasswordInput)
+    email=forms.EmailField(label="Email ID", required=True)
 
     class Meta:
         model=User
-        fields=('username', 'email',)
+        fields=('username', 'email')
+
+    def clean_email(self):
+        email=self.cleaned_data.get("email")
+        if email is None:
+            raise forms.ValidationError("Email is required")
+        return email
+
 
     def clean_password2(self):
         pass1= self.cleaned_data.get("password1")
@@ -39,4 +50,11 @@ class LoginForm(forms.Form):
              if userobj is None:
                  raise forms.ValidationError("Invalid username/ password")
              return super(LoginForm , self).clean()
+
+
+class ProfileForm(forms.ModelForm):
+      class Meta:
+           model= Profile
+           fields= ("birth_date", "address", "phone")
+
 

@@ -8,10 +8,12 @@ from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy ,reverse
-from django.views.generic import CreateView
-from myapp.forms import RegisterForm , LoginForm
+from django.views.generic import CreateView, UpdateView
+from myapp.forms import RegisterForm, LoginForm, ProfileForm
+# from myapp.forms import RegisterForm, LoginForm
 from myapp.models import Product, ShoppingCart, Category ,Order , Order_Details
 from webproject1 import settings
+
 
 def show(request):
         return render(request, "index.html")
@@ -145,7 +147,7 @@ def finalorder(request):
 
     message= EmailMultiAlternatives(
         "Message from Downy shoes",
-        "Your order has been placed successfully . Your Order No. is "+str(orderno),
+          "Your order has been placed successfully .  "+str(orderno),
     to = [request.session['emailid']],
          from_email=settings.EMAIL_HOST_USER,
                     reply_to=['djangowebproject@outlook.com'] )
@@ -207,7 +209,22 @@ def changepass(request):
         return render(request, "changepassword.html")
 
 
+def add_user(request):
+          pform= ProfileForm(request.POST or None, instance=request.user.profile)
+          if pform.is_valid():
+              pform.save()
+              return render(request, "profile.html",{"form": pform, "messages": "your profile has completed"})
+          return render(request, "profile.html", {"form": pform})
 
+class updateprofile(SuccessMessageMixin, UpdateView):
+      model=User
+      template_name = 'updateprofile.html'
+      fields=['username', 'email']
+      success_message = " Your Profile has been updated successfully"
+
+      def get_success_url(self):
+          pk=self.kwargs["pk"]
+          return reverse("updateprofile", kwargs={"pk": pk})
 
 
 

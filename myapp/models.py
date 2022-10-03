@@ -3,6 +3,11 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
+
 class Category(models.Model):
     Category_name = models.CharField(max_length=120)
 
@@ -24,7 +29,10 @@ class Product(models.Model):
     exclusive_products=models.BooleanField(null=True, default=False)
     time_of_entry=models.DateTimeField(null=True)
     values=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"))
-    quantity=models.CharField(choices=values, max_length=1, null=True)
+    quantity=models.CharField(choices=values, max_length=6, null=True)
+    values1 = (("1", "5"), ("2", "5.5"), ("3", "6"), ("4", "6.5"), ("5", "7"), ("6", "7.5"),("6", "8"),("7", "8.5"),("8", "9"),("9", "9.5"),("10", "10"))
+    size = models.CharField(choices=values1, max_length=10, null=True)
+
 
 
     def __str__(self):
@@ -70,6 +78,22 @@ class Order_Details(models.Model):
 
      def __str__(self):
          return str(self.orderno)
+
+
+class Profile(models.Model):
+      user= models.OneToOneField(User, on_delete=models.CASCADE)
+      birth_date =models.DateField(null=True , blank=True)
+      address= models.TextField(null=True)
+      phone= models.BigIntegerField(null=True)
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+     if created:
+         Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender,instance, **kwargs):
+       instance.profile.save()
 
 
 

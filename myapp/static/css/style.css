@@ -1396,7 +1396,7 @@ p.head_para {
     .banner-info-wthree    h3 {
       font-size: 11em;
     }
-    .banner-top,.banner-top1,.banner-top2,.banner-top3{
+    .banner-top,.banner-top1,.banner-top2,.banner-top3 .banner-top4, .banner-top5,.banner-top6{
         min-height:700px;
     }
     .callbacks_tabs {

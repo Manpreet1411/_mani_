@@ -21,5 +21,6 @@ urlpatterns = [
     path('order-history', views.orderhistory, name='orderhistory'),
     path('order-details/<int:oid>', views.orderdetails, name='showorderdetails'),
     path('change-password', views.changepass, name='changepassword'),
-
+    path('profile', views.add_user, name='profile'),
+    path('update-profile/<int:pk>', views.updateprofile.as_view(), name='updateprofile'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

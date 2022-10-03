@@ -1,4 +1,4 @@
-{% extends "base1.html" %}
+{% extends "bn.html" %}
 
 {% load static %}
 {% block title %}
@@ -8,28 +8,11 @@
 
 <!--<h4>Your shopping cart contains: <span></span></h4>-->
 
-<style>
-
-      .b{position: absolute ; top: 6.1%; left: 89%;  color: #fff;border: none;text-align: center;background: none;width: 80px;height: 45px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-
-</style>
-
-<style>
-
-      .b2{position: absolute ; top: 6.1%; left: 94.6%;  color: #fff;border: none;text-align: center;background: none;width: 80px;height: 45px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-
-</style>
-
-<!--	signinbutton==========================-->
-
-				<a href= "{% url 'signup'  %}"><button type="submit"  class="b">Sign up</button></a>
-
-
-                <a href= "{% url 'signin'  %}"><button type="submit"  class="b2">Sign in</button> </a>
+<!--	catgories sub-menu-->
 
 
 
-<br>
+<br><br><br><br>
        <div class="container">
            <br>
            <h2>Shopping cart</h2>
