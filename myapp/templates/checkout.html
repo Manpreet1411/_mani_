@@ -1,66 +1,307 @@
-{% extends "bn.html" %}
+<!DOCTYPE html>
+<html lang="en">
 {% load static %}
 {% block title %}
-<title> Checkout </title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+</head>
 {% endblock %}
 {% block content %}
 
+<style>
+body
+{
+    font-family: 'Roboto', sans-serif!important;
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+.mainscreen
+{
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+    flex-direction: column;
+    background-color: #DFDBE5;
+    background-image: url('{% static 'images/checkoutbg.jpg' %}');
+    background-repeat:no-repeat;
+    background-size:100%;
+    color:#963E7B;
+}
+.card {
+	width: 60rem;
+    margin: auto;
+     margin-top: -50px;
+    background: white;
+    position:center;
+    align-self: center;
+    top: 25rem;
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px #3535358c;
+    display:flex;
+    flex-direction: row;
 
+}
+.leftside {
+	background: #030303;
+	width: 25rem;
+	display: inline-flex;
+    align-items: center;
+    justify-content: center;
+	border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.product {
+    object-fit: cover;
+	width: 20em;
+    height: 20em;
+    border-radius: 100%;
+}
+.rightside {
+    background-color: #ffffff;
+	width: 35rem;
+	border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+}
+p{
+    display:block;
+    font-size: 1rem;
+    font-weight: 420;
+    margin: .8rem 0;
+}
+.inputbox
+{
+    color:#030303;
+	width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom:0.5rem;
 
-<style type="text/css">
-    #form input
-    {
-       width:250px;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: #615a5a;
+    font-size: 1.1rem;
+    font-weight: 500;
+  outline:none;
+}
+.expcvv {
+    display:flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+.expcvv_text{
+    padding-right: 1rem;
+}
+.expcvv_text2{
+    padding:0 1rem;
+}
+.button{
+    background: linear-gradient(
+135deg
+, #753370 0%, #298096 100%);
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: 2px;
+    width:100%;
+    letter-spacing: .11rem;
+    outline:none;
+}
+.button:hover
+{
+	transform: scale(1.05) translateY(-3px);
+    box-shadow: 3px 3px 6px #38373785;
+}
+@media only screen and (max-width: 1000px) {
+    .card{
+        flex-direction: column;
+        width: auto;
+
     }
+    .leftside{
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+      border-top-right-radius:0;
+      border-radius:0;
+    }
+    .rightside{
+        width:auto;
+        border-bottom-left-radius: 1.5rem;
+        padding:0.5rem 3rem 3rem 2rem;
+      border-radius:0;
+    }
+}
 </style>
+<style>
+       body{
+        font-family: 'Lato', sans-serif;
+    }
+.overlay {
+  height: 100%;
+  width: 18%;
+  display: none;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left: 10px;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+.overlay-content {
+  position: relative;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+.overlay a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #BF40BF;
+  display: block;
+  transition: 0.3s;
+}
+.overlay a:hover, .overlay a:focus {
+  color:#CF9FFF
+}
+.overlay .closebtn {
+  position: relative;
+  top: 8px;
+  right: -220px;
+  font-size: 50px;
+}
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+<body onload="resetSelection()">
+<!--  =======================/menu/====================-->
 
- <div class="page-head_agile_info_w3l">
+   <!-- The overlay -->
+<div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="overlay-content">
+      <a href="{% url 'homepage'   %}">Home</a>
+      <a href= "{% url 'shoppingcart'  %}">Back to Cart</a>
+      <a href="{% url 'signup'  %}">Sign up</a>
+      <a href="{% url 'signin'  %}">Sign in </a>
+      <a href="{% url 'logout'  %}">LogOut</a>
 
-			<div class="container">
-       <div class="col-md-8">
-           <h3> Checkout</h3><br><br>
-           		<h4>Add a new Details</h4><br>
-        <br>
-            <form action="{% url 'finalorder' %}" method="post" >
-       {% csrf_token %}
-                <label>Name :</label>
-                 <input type="text"  name="name" required="" placeholder="Enter your full name"  class="form-control,control-label">
-               <br><br>
-                 <label>Phone :</label>
-                   <input type="number"  name="phone" required="" placeholder="Enter phone no." class="form-control,control-label">
-               <br><br>
-                 <label>Pincode :</label>
-                   <input type="number" name="pincode" required="" placeholder="Enter your pincode" class="form-control,control-label">
-               <br><br>
-                 <label>Address:</label>
-                <textarea rows="5"    name="address"  required="" placeholder="Enter your address"  class="form-control"></textarea>
-               <br><br>
-                 <label>City:</label>
-                   <input type="text" name="city" required="" placeholder="Enter city name"  class="form-control,control-label">
-               <br><br>
-                 <label>State :</label>
-                   <input type="text" name="state" required="" placeholder="Enter state name"  class="form-control,control-label">
-               <br><br>
-                 <label>Payment mode :</label>
-                   <select  name="paymentmode" required="" class="form-control,control-label">
-                            <option > Choose Payment Mode</option>
-                         <option value="cod"> Cash on delivery</option>
-						<option value="gpay">Google pay on 123 </option>
-                   </select>
-               <br><br>
+    </div>
 
-                     <input type="submit" name="submit" value="Checkout" class="btn btn-success">  <br><br>
-            </form>
-       </div>
+  </div>
+<script>
+    function openNav() {
+  document.getElementById("myNav").style.display = "block";
+}
 
-						{% if messages %}
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("myNav").style.display = "none";
+}
+</script>
+
+<div class="mainscreen">
+      <span  style="font-size:30px;cursor:pointer ;color:  #BF40BF ; margin-left:18px; margin-top:20px" onclick="openNav()">&#9776; Menu</span>
+          <div class="card">
+            <div class="leftside">
+              <img
+                src="{% static 'images/checkoutimage.jpg' %}"
+                class="product"
+                alt="Shoes"
+              />
+            </div>
+            <div class="rightside">
+              <form action="{% url 'finalorder' %}" method="post"  >
+          {% csrf_token %}
+                <h1>CheckOut</h1>
+
+                <h2>Add a new Details</h2>
+                <p>Name</p>
+                <input type="text" class="inputbox" name="name"  placeholder="Enter your full name" required />
+                <p>Phone</p>
+                <input type="number" class="inputbox" name="phone"  placeholder="Enter phone no." required />
+                <p>Pincode</p>
+                <input type="number" class="inputbox" name="pincode"  placeholder="Enter your pincode" required />
+                <p>Address</p>
+                <textarea  class="inputbox"  name="address" placeholder="Enter your address"  required ></textarea>
+
+                <p>State</p>
+                <select class="inputbox" name="state"  >
+                    <option value="" >--Select your state name--</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands </option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+     </select>
+    <div class="expcvv">
+
+                <p class="expcvv_text2">City</p>
+               <input type="text" class="inputbox" name="city"  placeholder="Enter city " required />
+
+               <p class="expcvv_text2">Payment mode</p>
+               <select class="inputbox" name="paymentmode"  required>
+                  <option value="">Choose Payment Mode</option>
+                   <option value="cod"> Cash on delivery</option>
+                   <option value="gpay">Google pay on 123 </option>
+               </select>
+            </div>
+                <p></p>
+                <input type="submit" name="submit" value="Checkout"   class="button">
+              </form>
+                 {% if messages %}
 						<ul class="messages">
 							<li> {{messages}}</li>
 						</ul>
 						{% endif %}
+            </div>
+
+          </div>
+        </div>
 
 
-                </div>
-     </div>
 
+</body>
+</html>
 {% endblock %}

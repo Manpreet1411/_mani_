@@ -25,11 +25,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <style>
 
-      .b{position: absolute; top: 6.5%; left: 72%;  color: #fff;border: none;text-align: center;background: none;width: 70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+      .b{position: absolute; top: 6.5%; left: 72%;  color: #fff;border: none;text-align: center;background: none;width: 75px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
 </style>
 <style>
 
-      .b2{position: absolute; top: 6.5%; left: 77%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+      .b2{position: absolute; top: 6.5%; left: 77%;  color: #fff;border: none;text-align: center;background: none;width:75px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
 </style>
 		<!-- //custom-theme -->
 	<link href="{%static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
@@ -59,9 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul>
 							<li><a href="{% url 'homepage' %}" class="active">Home</a></li>
 							<li><a href="about.html">About</a></li>
-							<li><a href="404.html">Team</a></li>
-							<li><a href="{% url 'productdetails'  %}">Shop Now</a></li>
-							<li><a href="contact.html">Contact</a></li>
+						    <li><a href="contact.html">Contact</a></li>
 								<li class='sub-menu'><a href='#'>Categories<div class='fa fa-caret-down right'></div></a>
                             	<ul>
 									{% fetch_categories %}
@@ -104,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="inner_breadcrumb_agileits_w3">
 
 				<ul class="short">
-					<li><a href="index.html">Home</a><i>|</i></li>
+					<li><a href="{% url 'homepage' %}">Home</a><i>|</i></li>
 					<li>Single</li>
 				</ul>
 			</div>
@@ -152,7 +150,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer_agileinfo_w3">
 		<div class="footer_inner_info_w3ls_agileits">
 			<div class="col-md-3 footer-left">
-				<h2><a href="index.html"><span>D</span>owny Shoes </a></h2>
+				<h2><a href="{% url 'homepage' %}"><span>D</span>owny Shoes </a></h2>
 				<p>Lorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
 				<ul class="social-nav model-3d-0 footer-social social two">
 					<li>
@@ -186,7 +184,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-4 sign-gd">
 						<h4>Our <span>Information</span> </h4>
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="{% url 'homepage' %}">Home</a></li>
 							<li><a href="about.html">About</a></li>
 							<li><a href="404.html">Services</a></li>
 							<li><a href="404.html">Short Codes</a></li>

@@ -37,9 +37,7 @@
 						<ul>
 							<li><a  href="{% url 'homepage'%}" class="active">Home</a></li>
 							<li><a href="about.html">About</a></li>
-							<li><a href="404.html">Team</a></li>
-							<li><a href="{% url 'productdetails'  %}">Shop Now</a></li>
-							<li><a href="contact.html">Contact</a></li>
+						     <li><a href="contact.html">Contact</a></li>
 								<li class='sub-menu'><a href='#'>Categories<div class='fa fa-caret-down right'></div></a>
                              	<ul>
 										{% fetch_categories %}
@@ -101,7 +99,7 @@
 			<div class="inner_breadcrumb_agileits_w3">
 
 				<ul class="short">
-					<li><a href="index.html">Home</a><i>|</i></li>
+					<li><a href="{% url 'homepage' %}">Home</a><i>|</i></li>
 					<li>Shop</li>
 				</ul>
 			</div>
