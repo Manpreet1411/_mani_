@@ -6,6 +6,7 @@ from myapp import views
 
 urlpatterns = [
     path('', views.show , name="homepage"),
+    path('about-us', views.showabout , name="about"),
     path('add-shopping-cart', views.addtoshoppingcart, name='addtoshoppingcart'),
     path('shopping-cart', views.showshoppingcart, name='shoppingcart'),
     path('shoes-product-details', views.showshoesdetails, name='productdetails'),
@@ -17,7 +18,7 @@ urlpatterns = [
     path('check-out', views.mycheckout, name='checkout'),
     path('sign-out', views.mylogout, name='logout'),
     path('order', views.finalorder, name='finalorder'),
-    path('order-success', views.showordersucess, name='ordersuccess'),
+    path('order-success', views.showordersuccess, name='ordersuccess'),
     path('order-history', views.orderhistory, name='orderhistory'),
     path('order-details/<int:oid>', views.orderdetails, name='showorderdetails'),
     path('change-password', views.changepass, name='changepassword'),

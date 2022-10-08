@@ -18,6 +18,11 @@ from webproject1 import settings
 def show(request):
         return render(request, "index.html")
 
+
+
+def showabout(request):
+        return render(request, "about.html")
+
 def showshoesdetails(request):
         product_data = Product.objects.filter(exclusive_products=True)
         return render(request,"product_details.html", {'product_details_data': product_data })
@@ -162,7 +167,7 @@ def finalorder(request):
 
 
 
-def showordersucess(request):
+def showordersuccess(request):
     userobj = User.objects.get(username=request.session["myusername"])
     ordersdata= Order.objects.filter(username=userobj).order_by('-id')[:1]
     result= request.session["result"]
@@ -179,8 +184,12 @@ def orderhistory(request):
     return render(request, "orderhistory.html", {'ordersdata':ordersdata})
 
 def orderdetails(request, oid):
-    orderdetailsdata= Order_Details.objects.filter(orderno=oid)
+
+    orderdetailsdata=Order_Details.objects.filter(orderno=oid)
+    print(orderdetailsdata)
     return render(request, "orderdetails.html", {'orderdetailsdata': orderdetailsdata})
+
+
 
 
 

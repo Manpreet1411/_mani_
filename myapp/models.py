@@ -76,6 +76,8 @@ class Order_Details(models.Model):
      quantity=models.IntegerField()
      total_cost=models.IntegerField()
 
+
+
      def __str__(self):
          return str(self.orderno)
 
