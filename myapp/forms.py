@@ -8,10 +8,10 @@ from myapp.models import Profile
 
 
 class RegisterForm(forms.ModelForm):
-    username=forms.CharField(label="Username", max_length=100)
-    password1=forms.CharField(label="Password", widget=forms.PasswordInput)
-    password2=forms.CharField(label="Confirm Password", widget=forms.PasswordInput)
-    email=forms.EmailField(label="Email ID", required=True)
+    username=forms.CharField(label="Username", max_length=100, widget=forms.TextInput(attrs={'class':"form-control" })  )
+    password1=forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class':"form-control" }))
+    password2=forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={'class':"form-control" }))
+    email=forms.EmailField(label="Email ID", required=True, widget=forms.TextInput(attrs={'class':"form-control" }))
 
     class Meta:
         model=User
@@ -40,8 +40,8 @@ class RegisterForm(forms.ModelForm):
         return userobj
 
 class LoginForm(forms.Form):
-         username1=forms.CharField(label="Username")
-         password1= forms.CharField(label="Password", widget=forms.PasswordInput)
+         username1=forms.CharField(label="Username", widget=forms.TextInput(attrs={'class':"form-control" }))
+         password1= forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class':"form-control" }))
 
          def clean(self):
              uname=self.cleaned_data.get("username1")
@@ -55,6 +55,14 @@ class LoginForm(forms.Form):
 class ProfileForm(forms.ModelForm):
       class Meta:
            model= Profile
-           fields= ("birth_date", "address", "phone")
+           fields= ( "first_name","middle_name","last_name","birth_date",     "phone",  "address" )
+           widgets={
+                           "first_name": forms.TextInput(attrs={'class': "form-control"}),
+                           "middle_name": forms.TextInput(attrs={'class': "form-control"}),
+                           "last_name": forms.TextInput(attrs={'class': "form-control"}),
+                           "birth_date": forms.TextInput(attrs={'class':"form-control" ,'placeholder':'yy/mm/dd'}),
+                           "phone": forms.TextInput(attrs={'class': "form-control"}),
+                           "address": forms.Textarea(attrs= {'class': "form-control", "rows":4 }),
+                   }
 
 

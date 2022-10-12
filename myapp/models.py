@@ -31,7 +31,7 @@ class Product(models.Model):
     values=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"))
     quantity=models.CharField(choices=values, max_length=6, null=True)
     values1 = (("1", "5"), ("2", "5.5"), ("3", "6"), ("4", "6.5"), ("5", "7"), ("6", "7.5"),("6", "8"),("7", "8.5"),("8", "9"),("9", "9.5"),("10", "10"))
-    size = models.CharField(choices=values1, max_length=10, null=True)
+    size = models.CharField(choices=values1, max_length=11, null=True)
 
 
 
@@ -83,6 +83,9 @@ class Order_Details(models.Model):
 
 
 class Profile(models.Model):
+      first_name = models.CharField(max_length=100, blank=False )
+      middle_name=models.CharField(max_length=100, blank=True)
+      last_name = models.CharField(max_length=100, blank=False)
       user= models.OneToOneField(User, on_delete=models.CASCADE)
       birth_date =models.DateField(null=True , blank=True)
       address= models.TextField(null=True)

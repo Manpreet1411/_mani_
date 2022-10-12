@@ -11,7 +11,7 @@
 <style type="text/css">
     #form input
     {
-       width:200px;
+       width:250px;
     }
 
 </style>
@@ -21,26 +21,29 @@
 			<div class="container">
                 <div class="col-md-8">
                  <br><br>
-                    <h3>Sign-up </h3>
+                    <h1 style="font-family:  Lucida Bright"> Sign-up </h1>
                     <br><br>
-
+               <div class="form-group">
                 <form id="form" method="post"    >
                     {% csrf_token %}
                 {{ form.as_p }}
                     <br><br>
-                    <input type="submit" name="submit" value="Sign-up" class="btn btn-primary" >
+                    <input style=" background:black ; color:white"  type="submit" name="submit" value="Sign-up" class="btn btn-primary" >
                 </form>
-                    <br><br><br>
-                  </div>
-
-                {% if messages %}
-                <ul class="message">
+                   <br>
+                     {% if messages %}
+                <ul  style="font-size:22px" class="message">
                     {% for message in messages %}
                     <li{% if message.tags %} class="{{message.tags}}"{% endif %}>{{ message }}</li>
                     {% endfor %}
                 </ul>
+                    <br><br><br>
+                  </div><br><br>
+
+
                 {% endif %}
             </div>
+         </div>
          </div>
 
 {% endblock %}

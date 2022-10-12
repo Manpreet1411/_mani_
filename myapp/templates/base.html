@@ -20,142 +20,139 @@
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
-
-
-	</script>
-
+</script>
 <style>
-
-      .b{position: absolute; top: 6.5%; left: 72%;  color: #fff;border: none;text-align: center;background: none;width: 70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
+body{
+         font-family: 'Lato', sans-serif;
+     }
+ .overlay {
+   height: 100%;
+   width: 10%;
+   display: none;
+   position: fixed;
+   z-index: 0;
+   top: 0;
+   left: 10px;
+   background-color: rgb(0,0,0);
+   background-color: rgba(0,0,0, 0.9);
+ }
+ .overlay-content {
+   position: relative;
+   top: 10%;
+   width: 100%;
+   text-align: center;
+   margin-top: 20px;
+ }
+ .overlay a {
+   padding: 25px;
+   text-decoration: none;
+   font-size: 35px;
+   color:   white
+   display: block;
+   transition: 0.3s;
+ }
+ .overlay a:hover, .overlay a:focus {
+   color:#f05936;
+ }
+ .overlay .closebtn {
+   position: relative;
+   top: 8px;
+   right: -600px;
+   font-size: 50px;
+   color:white
+ }
+ @media screen and (max-height: 450px) {
+   .overlay a {font-size: 20px}
+   .overlay .closebtn {
+     font-size: 40px;
+     top: 15px;
+     right: 35px;
+   }
+}
 </style>
 <style>
-
-      .b2{position: absolute; top: 6.5%; left: 77%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 33px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-	<style>
-
-      .b3{position: absolute; top: 6.5%; left: 77.8%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 43px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-<style>
-
-      .b4{position: absolute; top: 6.5%; left: 72%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 43px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-<style>
-
-      .b5{position: absolute; top: 6.5%; left: 66%;  color: #fff;border: none;text-align: center;background: none;width:73px; height: 43px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-<style>
-
-      .b6{position: absolute; top: 6.5%; left: 58%;  color: #fff;border: none;text-align: center;background: none;width:73px; height: 43px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-	<style>
-
-      .b7{position: absolute; top: 6.5%; left: 60%;  color: #fff;border: none;text-align: center;background: none;width:73px; height: 43px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-	<style>
-
-      .b8{position: absolute; top: 6.5%; left: 54.2%;  color: #fff;border: none;text-align: center;background: none;width:70px; height: 43px;background: rgba(27, 25, 25, 0.27);border: 1px solid rgba(27, 25, 25, 0.27)}
-</style>
-<style>
-	.navbar
+.navbar
 {
-  overflow: hidden;
+  overflow:auto;
   background-color: #333;
   border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-position:absolute;
-z-index: 2
 }
 .navbar a {
   float: left;
   font-size: 18px;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 32px 20px;
   text-decoration: none;
-  border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-z-index:9999;
-}
-.subnav {
-  float: left;
-  overflow: hidden;
-  border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-
-visibility: visible; z-index: 100;
-}
-.subnav .subnavbtn {
-  font-size: 18px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0px;
-  border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-visibility: visible; z-index: 100;
+  border-radius: 2px;
+  height:36px;
 }
 .navbar a:hover, .subnav:hover .subnavbtn {
   background-color:  #f05936;
-  border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-z-index:9999;
-}
+  border-radius: 8px;}
 .subnav-content {
   display: none;
   position: absolute;
   left: 9px;
-  background-color:   #333;
-  width: 100%;
+  background-color:   #fff;
+  width: 50%;
+
   z-index: 1;
   border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-z-index:9999;
-}
+  }
 .subnav-content a {
   float: left;
   color:  white;
   text-decoration: none;
-  border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-z-index:9999;
+  border-radius: 2px;
 }
 .subnav-content a:hover {
   background-color: #f05936;
   color: black;
   border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-z-index:9999;
 }
 .subnav:hover .subnav-content {
   display: block;
   border-radius: 8px;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
--o-border-radius: 8px;
-z-index:9999;
+
 }
+</style>
+	<style>
+		.dropbtn {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  padding-right: 10px;
+  font-size: 19px;
+  font-family: inherit;
+  border: none;
+  margin-left:800px;
+   margin-top:-80px;
 
-
+   border-radius: 8px;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: relative;
+   background-color: rgb(0,0,0);
+   background-color: rgba(0,0,0, 0.9);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color:#f05936;  border-radius: 8px;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color:#f05936;}
 	</style>
 
 	<!-- //custom-theme -->
@@ -163,49 +160,64 @@ z-index:9999;
 	<link rel="stylesheet" href="{%static 'css/shop.css' %}" type="text/css" media="screen" property="" />
 	<link href="{%static 'css/style7.css' %}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{%static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
-	<!-- font-awesome-icons -->
-	<link href="{%static 'css/font-awesome.css' %}" rel="stylesheet">
-	<!-- //font-awesome-icons -->
-	<link href="http://fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+    <link href="{%static 'css/font-awesome.css' %}" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	    rel="stylesheet">
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	 <link href="{%static 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 
 <body>
-
-
-
 <!--   ======================== horizontal menu===============-->
+      <!-- The overlay -->
+<div id="myNav" class="overlay">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
+    <div class="overlay-content">
+        <a style="color: white">{% fetch_categories %}</a>
 
- <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="#contact">About</a>
+    </div>
+
+    <script>
+        function openNav() {
+      document.getElementById("myNav").style.display = "block";
+    }
+
+
+    function closeNav() {
+      document.getElementById("myNav").style.display = "none";
+    }
+    </script>
+
+  </div>
+    <div class="navbar">
+
+         <a  href="{% url 'homepage' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
         <a href="#contact">Contact</a>
-        <div class="subnav">
-          <button class="subnavbtn">Categories <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-             <ul>
-				 	{% fetch_categories %}
-			 </ul>
-          </div>
-        </div>
-        <div class="subnav ">
-          <button class="subnavbtn ">Account<i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content ">
-            <a href="#bring" >Profile</a>
-            <a href="#deliver">Update Profile</a>
-            <a href="#package">Change Password</a>
-          </div>
-        </div>
-        <a href="#contact" class="link"  >Order History</a>
-        <a href="#home"  class="link"  >Logout</a>
-        <a href="#home" class="link"  >Sign-in</a>
-        <a href="#home" class="link"  >Sign-up</a>
-        </div>
+		{% if user.is_authenticated %}
+        <a href="{% url 'orderhistory'  %}">Order History</a>
+        <a href="{% url 'logout'  %}">Logout</a>
+		{% else %}
+        <a href="{% url 'signin'  %}">Sign-in</a>
+        <a href="{% url 'signup'  %}">Sign-up</a>
+		{% endif %}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+		<a href="{% url 'shoppingcart'  %}">Cart</a>
+		<a style="font-size:20px;cursor:pointer ;color:  white; margin-left:-13px; margin-top:-3px;" onclick="openNav()">Categories</a>
+		{% if user.is_authenticated %}
+		<div class="dropdown fa fa-caret-down ">
+		  <button   class="dropbtn">Account ⇓	</button>
+		  <div class="dropdown-content">
+			<a  style="color:white; margin-left:500px;" href="{% url 'profile' %}">Profile</a>
+			<a style="color:white" href= "{% url 'updateprofile'  request.user.id %}">Update Profile</a>
+			<a style="color:white"  href= "{% url 'changepassword'  %}">Change Password</a>
+		  </div>
+		{% else %}
 
-
-	<!-- banner -->
+		{% endif %}
+		</div>
+	</div>
+<!-- banner -->
 
 
 	<div class="banner_top" id="home">
@@ -215,72 +227,7 @@ z-index:9999;
 				<div class="logo">
 					<h1><a class="navbar-brand" href="index.html"><span>Downy</span> <i>Shoes</i></a></h1>
 				</div>
-				<div class="overlay overlay-contentpush">
-					<button type="button" class="overlay-close"><i class="fa fa-times" aria-hidden="true"></i></button>
-
-					<nav>
-						<ul >
-
-							<li><a href="{% url 'homepage' %}" class="active">Home</a></li>
-							<li><a href="{% url 'about' %}">About</a></li>
-							<li><a href="contact.html">Contact</a></li>
-
-
-                          	<li class='sub-menu'><a href='#'>Categories<div class='fa fa-caret-down right'></div></a>
-                            	<ul>
-									{% fetch_categories %}
-
-							</ul>
-                   		</li>
-						</ul>
-
-
-
-
-
-
-
-					</nav>
-				</div>
-				<div class="mobile-nav-button">
-					<button id="trigger-overlay" type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
-				</div>
-				<!-- cart details -->
-				<div class="top_nav_right">
-					<div class="shoecart shoecart2 cart cart box_1">
-						<div class="shoecart shoecart2 cart cart box_1">
-
-							<a href= "{% url 'shoppingcart'  %}"><button class="top_shoe_cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button></a>
-
-					</div>
-					</div>
-
-				</div>
-
-				<!-- //cart details -->
-				<!-- search -->
-				<div class="search_w3ls_agileinfo">
-					<div class="cd-main-header">
-						<ul class="cd-header-buttons">
-							<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-						</ul>
-					</div>
-					<div id="cd-search" class="cd-search">
-						<form action="#" method="post">
-							<input name="Search" type="search" placeholder="Click enter after typing...">
-						</form>
-					</div>
-				</div>
-
-
-									<!-- //search -->
-
-
-
-
-
-
-				<div class="clearfix"></div>
+           <div class="clearfix"></div>
 			</div>
 			<!-- /slider -->
 			<div class="slider"  >
@@ -294,171 +241,32 @@ z-index:9999;
 								<div class="banner-info-wthree">
 									   <h3>Skateboard</h3>
 						                  <p>Good shoes take you good places.</p>
-									    {% if user.is_authenticated %}
-
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-									    {% if user.is_authenticated %}
-									    <a href= "{% url 'orderhistory'  %}">
-											<button type="submit"  class="b4">Order History</button></a>
-										 <a href= "{% url 'updateprofile'  request.user.id %}">
-
-												<button type="submit"  class="b7">Update profile</button></a>
-
-									    {% else %}
-
-										{% endif %}
-										{% if user.is_authenticated %}
-											 <a href= "{% url 'changepassword'  %}">
-												 <button type="submit"  class="b5">Change Password</button></a>
-											 <a href= "{% url 'profile' %}">
-													<button type="submit"  class="b8">Profile</button></a>
-										{% else %}
-
-										{% endif %}
-
-
-
-								</div>
-
-							</div>
+                                      </div>
+                                   </div>
 						</li>
 						<li>
 							<div class="banner-top3">
 
 								<div class="banner-info-wthree">
-
-									{% if user.is_authenticated %}
-
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-									     {% if user.is_authenticated %}o
-									    <a href= "{% url 'orderhistory'  %}">
-											<button type="submit"  class="b4">Order History</button></a>
-										 <a href= "{% url 'updateprofile'  request.user.id %}">
-												<button type="submit"  class="b7">Update profile</button></a>
-									    {% else %}
-
-										{% endif %}
-										{% if user.is_authenticated %}
-											 <a href= "{% url 'changepassword'  %}">
-												 <button type="submit"  class="b5">Change Password</button></a>
-											 <a href= "{% url 'profile' %}">
-													<button type="submit"  class="b8">Profile</button></a>
-										{% else %}
-
-										{% endif %}
-
-									<h3>Heels</h3>
+                                    <h3>Heels</h3>
 									<p>For All Walks of Life.</p>
-
 								</div>
-
 							</div>
 						</li>
 						<li>
 							<div class="banner-top">
 								<div class="banner-info-wthree">
-
-									{% if user.is_authenticated %}
-
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button></a>
-
-									    {% endif %}
-									    {% if user.is_authenticated %}o
-									    <a href= "{% url 'orderhistory'  %}">
-											<button type="submit"  class="b4">Order History</button></a>
-										 <a href= "{% url 'updateprofile'  request.user.id %}">
-												<button type="submit"  class="b7">Update profile</button></a>
-									    {% else %}
-
-										{% endif %}
-										{% if user.is_authenticated %}
-											 <a href= "{% url 'changepassword'  %}">
-												 <button type="submit"  class="b5">Change Password</button></a>
-											 <a href= "{% url 'profile' %}">
-													<button type="submit"  class="b8">Profile</button></a>
-										{% else %}
-
-										{% endif %}
-
-									<h3>Athletic</h3>
+                                     <h3>Athletic</h3>
 									<p>See how good they feel.</p>
-
 								</div>
-
 							</div>
 						</li>
 						<li>
-
 							<div class="banner-top1">
 								<div class="banner-info-wthree">
-                                   {% if user.is_authenticated %}
-
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-									     {% if user.is_authenticated %}o
-									    <a href= "{% url 'orderhistory'  %}">
-											<button type="submit"  class="b4">Order History</button></a>
-										 <a href= "{% url 'updateprofile'  request.user.id %}">
-												<button type="submit"  class="b7">Update profile</button></a>
-									    {% else %}
-
-										{% endif %}
-										{% if user.is_authenticated %}
-											 <a href= "{% url 'changepassword'  %}">
-												 <button type="submit"  class="b5">Change Password</button></a>
-											 <a href= "{% url 'profile' %}">
-													<button type="submit"  class="b8">Profile</button></a>
-										{% else %}
-
-										{% endif %}
-
-
 									<h3>Loafers</h3>
 									<p>Happiness comes in pair.</p>
-
 								</div>
-
 							</div>
 						</li>
 						<li>
@@ -466,43 +274,7 @@ z-index:9999;
 								<div class="banner-info-wthree">
 										<h3>High-neck</h3>
 												<p>See how good they feel.</p>
-
-									{% if user.is_authenticated %}
-
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-									     {% if user.is_authenticated %}o
-									    <a href= "{% url 'orderhistory'  %}">
-											<button type="submit"  class="b4">Order History</button></a>
-										 <a href= "{% url 'updateprofile'  request.user.id %}">
-												<button type="submit"  class="b7">Update profile</button></a>
-									    {% else %}
-
-										{% endif %}
-										{% if user.is_authenticated %}
-											 <a href= "{% url 'changepassword'  %}">
-												 <button type="submit"  class="b5">Change Password</button></a>
-											 <a href= "{% url 'profile' %}">
-													<button type="submit"  class="b8">Profile</button></a>
-										{% else %}
-
-										{% endif %}
-
-
-
-
 								</div>
-
 							</div>
 						</li>
 						<li>
@@ -510,43 +282,7 @@ z-index:9999;
 								<div class="banner-info-wthree">
 										<h3> Oxford Shoes </h3>
 												<p>See how good they feel.</p>
-
-									{% if user.is_authenticated %}
-
-									    <a href= "{% url 'logout'  %}">
-													<button type="submit"  class="b3">Logout</button>
-											</a>
-									    {% else %}
-									    <a href= "{% url 'signin'  %}">
-												<button type="submit"  class="b2">Sign in</button>
-										</a>
-
-										<a href= "{% url 'signup'  %}">
-												<button type="submit"  class="b">Sign up</button>
-										</a>
-									    {% endif %}
-									     {% if user.is_authenticated %}o
-									    <a href= "{% url 'orderhistory'  %}">
-											<button type="submit"  class="b4">Order History</button></a>
-										 <a href= "{% url 'updateprofile'  request.user.id %}">
-												<button type="submit"  class="b7">Update profile</button></a>
-									    {% else %}
-
-										{% endif %}
-										{% if user.is_authenticated %}
-											 <a href= "{% url 'changepassword'  %}">
-												 <button type="submit"  class="b5">Change Password</button></a>
-											 <a href= "{% url 'profile' %}">
-													<button type="submit"  class="b8">Profile</button></a>
-										{% else %}
-
-										{% endif %}
-
-
-
-
 								</div>
-
 							</div>
 						</li>
 					</ul>
@@ -570,8 +306,6 @@ z-index:9999;
 	<!-- //banner -->
 {% block content %}
 {% endblock %}
-
-
 <!--footer-->
 <!-- /newsletter-->
 	<div class="newsletter_w3layouts_agile">
@@ -767,10 +501,7 @@ $(".sub-menu a").click(function () {
 	$(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
 });
 </script>
-
-
 </body>
-
 </html>
 
 

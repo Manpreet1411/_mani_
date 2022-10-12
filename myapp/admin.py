@@ -14,7 +14,7 @@ admin.site.register(Order_Details)
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ["Product_name", "description", "price", "product_pic","details","time_of_entry","category","exclusive_products"]
+    list_display = ["Product_name", "description", "price", "product_pic","details","time_of_entry","category","exclusive_products","size"]
 
 
 

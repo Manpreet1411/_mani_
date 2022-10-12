@@ -11,7 +11,7 @@
 <style type="text/css">
     #form input
     {
-       width:200px;
+       width:250px;
     }
 
 </style>
@@ -19,26 +19,26 @@
          <div class="page-head_agile_info_w3l">
 
 			<div class="container" >
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <br><br>
-                    <h3>Sign-in </h3>
+                    <h1 style="font-family:  Lucida Bright" >Sign-in </h1>
                     <br><br>
 
-                <div class="input-group w3_w3layouts">
+                <div class="form-group">
 
 
-                <form id="form" method="post" >
+                <form  id="form" method="post" >
 
                     {% csrf_token %}
                 {{ myform.as_p }}
                     <br><br>
-                    <input type="submit" name="submit" class="btn btn-primary" value="Sign-in">
+                    <input   style=" background:black ; color:white" type="submit" name="submit" class="btn btn-primary" value="Sign-in">
                 </form>
                     <br><br>
                   </div>
 
                 {% if messages %}
-                <ul class="message">
+                <ul  style="font-size:22px" class="message">
                     {% for message in messages %}
                     <li{% if message.tags %} class="{{message.tags}}"{% endif %}> {{ message }} </li>
                     {% endfor %}

@@ -6,6 +6,10 @@ from myapp.models import  Category
 def times(number):
     return range(number)
 
+@register.filter(name="times")
+def times(number):
+    return range(number)
+
 @register.simple_tag()
 def currentdatetime():
     return datetime.datetime.now()

@@ -20,28 +20,34 @@
 			<div class="container" >
                 <div class="col-md-12">
                     <br><br>
-                    <h3> Update Profile</h3>
+                    <h1 style="font-family:  Lucida Bright" > Update Profile</h1>
                     <br><br>
 
-                <div class="input-group w3_w3layouts">
+                <div class="form-group">
 
-
-                <form id="form" method="post" >
+                <form method="post" >
 
                     {% csrf_token %}
-                {{ form.as_p }}
+                    <table>
+                {{ form.as_table}}
+                         </table>
+
                     <br><br>
-                    <input type="submit" name="submit" class="btn btn-primary" value="Update">
+                    <input style=" background:black ; color:white"  type="submit" name="submit" class="btn btn-primary" value="Update">
                 </form>
+                    <br>
+                   {% if messages %}
+                    <ul  style="font-size:22px" class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+
+
                     <br><br>
                   </div>
 
-                {% if messages %}
-                <ul class="message">
 
-                    <li> {{messages}}</li>
-
-                </ul>
                 {% endif %}
             </div>
          </div>

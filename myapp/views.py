@@ -13,6 +13,8 @@ from myapp.forms import RegisterForm, LoginForm, ProfileForm
 # from myapp.forms import RegisterForm, LoginForm
 from myapp.models import Product, ShoppingCart, Category ,Order , Order_Details
 from webproject1 import settings
+from django import forms
+
 
 
 def show(request):
@@ -222,13 +224,19 @@ def add_user(request):
           pform= ProfileForm(request.POST or None, instance=request.user.profile)
           if pform.is_valid():
               pform.save()
-              return render(request, "profile.html",{"form": pform, "messages": "your profile has completed"})
+              return render(request, "profile.html",{"form": pform, "messages": "Your profile has completed"})
           return render(request, "profile.html", {"form": pform})
 
 class updateprofile(SuccessMessageMixin, UpdateView):
       model=User
+
       template_name = 'updateprofile.html'
       fields=['username', 'email']
+      widgets = {
+          "username": forms.TextInput(attrs={'class': "form-control"}),
+          "email": forms.TextInput(attrs={'class': "form-control"}),
+
+      }
       success_message = " Your Profile has been updated successfully"
 
       def get_success_url(self):

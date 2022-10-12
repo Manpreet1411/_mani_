@@ -123,10 +123,15 @@
 				</div>
 				<div class="description">
 					<h5>{{shoe_details_data.description|safe}}</h5>
-					<form action="{% url 'addtoshoppingcart' %}" method="post">
-						<input type="text" value="Enter pincode" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter pincode';}"
-						    required="">
-						<input type="submit" value="Check">
+					<form action="{% url 'addtoshoppingcart' %}" method="post"><br>
+						{% csrf_token %}
+						<h5><b>Size: </b></h5>
+						<select id="size" name="size" onchange="change_country(this.value)" class="frm-field required sect">
+							{% for x in shoe_details_data.size|add:"0"|times %}
+							<option> {{ forloop.counter}} </option>
+							{% endfor %}
+
+						</select>
 					</form>
 				</div>
 				<form action="{% url 'addtoshoppingcart' %}" method="post">
