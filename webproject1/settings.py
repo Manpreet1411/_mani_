@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'o&@6s_hofy27hw)^8kf+xd$&lqm(^4oudrb02o4igsu(!8j%a4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['lace-it.herokuapp.com']
 
 
 # Application definition
@@ -53,6 +54,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
+]
+STATIC_ROOT = (os.path.join(BASE_DIR, "staticfiles"), )
+
+STATIC_FILES_DIRS = [
+ os.path.join(BASE_DIR, 'myapp/static')
 ]
 
 ROOT_URLCONF = 'webproject1.urls'
@@ -162,4 +170,4 @@ EMAIL_PORT=587
 EMAIL_USE_TLS =True
 EMAIL_BACKEND= "django.core.mail.backends.smtp.EmailBackend"
 
-
+django_heroku.settings(locals())

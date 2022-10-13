@@ -10,7 +10,7 @@ from myapp.models import Profile
 class RegisterForm(forms.ModelForm):
     username=forms.CharField(label="Username", max_length=100, widget=forms.TextInput(attrs={'class':"form-control" })  )
     password1=forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class':"form-control" }))
-    password2=forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={'class':"form-control" }))
+    password2=forms.CharField(label="Confirm Password", widget=forms.PasswordInput(attrs={'class':"form-control"  }))
     email=forms.EmailField(label="Email ID", required=True, widget=forms.TextInput(attrs={'class':"form-control" }))
 
     class Meta:

@@ -30,8 +30,8 @@ class Product(models.Model):
     time_of_entry=models.DateTimeField(null=True)
     values=(("1","1"),("2","2"),("3","3"),("4","4"),("5","5"),("6","6"))
     quantity=models.CharField(choices=values, max_length=6, null=True)
-    values1 = (("1", "5"), ("2", "5.5"), ("3", "6"), ("4", "6.5"), ("5", "7"), ("6", "7.5"),("6", "8"),("7", "8.5"),("8", "9"),("9", "9.5"),("10", "10"))
-    size = models.CharField(choices=values1, max_length=11, null=True)
+    values1 = ((1, "5"), (2, "5.5"), (3, "6"), (4, "6.5"), (5, "7"), (6, "7.5"),(7, "8"),(8, "8.5"),(9, "9"),(10, "9.5"),(11, "10"))
+    size = models.DecimalField(choices=values1, max_digits=3,decimal_places=1,  null=True)
 
 
 
